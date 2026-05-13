@@ -1,1 +1,1 @@
-Diagramas do banco de dados
+Diagramas de modelagem do banco de dados
