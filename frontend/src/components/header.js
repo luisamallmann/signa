@@ -1,9 +1,14 @@
-const NAV_LINKS = ["Home", "Tradutor", "Como Funciona", "Sobre", "Contato"]
-
-function Header() {
+const NAV_LINKS = [
+  { label: "Home",          href: "/" },
+  { label: "Tradutor",      href: "/pages/tradutor/" },
+  { label: "Como Funciona", href: "/pages/como-funciona/" },
+  { label: "Sobre",         href: "/pages/sobre/" },
+  { label: "Contato",       href: "/pages/contato/" },
+]
+function Header(pageAtiva = 'Home') {
   const linksHTML = NAV_LINKS.map(link => `
-    <a href="#" class="nav-item" data-page="${link}">
-      ${link}
+    <a href="${link.href}" class="nav-item" data-page="${link.label}">
+      ${link.label}
       <span class="nav-underline"></span>
     </a>
   `).join("")
@@ -44,8 +49,4 @@ function initNavigation() {
       link.classList.add('active')
     })
   })
-
-  //primeiro link ativo por padrão
-
-  links[0].classList.add('active')
 }
