@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+/* variáveis de cor — muda aqui, muda em todo lugar */
+:root {
+  --color-purple: #7c3aed;
+  --color-orange: #ea580c;
+  --color-pink:   #db2777;
+  --font-main:    'Plus Jakarta Sans', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-main);
+  background: #0d0010;
+  color: #fff;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* container geral da página */
+#app {
+  position: relative;
+  min-height: 100vh;
+}
+
+/* ── orbs ── */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.orb-purple {
+  width: 420px;
+  height: 420px;
+  background: var(--color-purple);
+  opacity: 0.55;
+  top: -80px;
+  left: -60px;
+}
+
+.orb-orange {
+  width: 340px;
+  height: 340px;
+  background: var(--color-orange);
+  opacity: 0.45;
+  top: 10px;
+  left: 35%;
+  transform: translateX(-50%);
+}
+
+.orb-pink {
+  width: 300px;
+  height: 300px;
+  background: var(--color-pink);
+  opacity: 0.4;
+  top: -40px;
+  right: -40px;
+}

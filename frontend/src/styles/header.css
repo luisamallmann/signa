@@ -1,0 +1,106 @@
+/* ── header ── */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  padding: 0 32px;
+  z-index: 50;
+
+  /* glassmorphism: fundo semi-transparente + desfoque */
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(18px) saturate(1.5);
+  -webkit-backdrop-filter: blur(18px) saturate(1.5);
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ── logo ── */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.logo img {
+  height: 40px;
+  object-fit: contain;
+}
+
+/* ── nav ── */
+nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0 auto;
+}
+
+.nav-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  transition: color 0.15s, background 0.15s;
+  cursor: pointer;
+}
+
+.nav-item:hover {
+  color: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.nav-item.active {
+  color: #fff;
+}
+
+/* underline laranja/rosa — só aparece no item ativo */
+.nav-underline {
+  width: 20px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #f97316, #db2777);
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.nav-item.active .nav-underline {
+  opacity: 1;
+}
+
+/* ── ícones da direita ── */
+.header-icons {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+}
+
+.icon-btn {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 18px;
+  transition: color 0.15s, background 0.15s;
+}
+
+.icon-btn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
