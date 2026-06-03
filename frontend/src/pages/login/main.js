@@ -4,7 +4,7 @@ const app = document.getElementById('app');
 
 app.innerHTML = `
 
-  ${Header()}
+  ${Header('Login')}
 
   `
 initNavigation();
