@@ -7,7 +7,7 @@ header {
   height: 80px;
   display: flex;
   align-items: center;
-  padding: 0 32px;
+  padding: 0 120px;
   z-index: 50;
 
   /* glassmorphism: fundo semi-transparente + desfoque */
@@ -32,9 +32,11 @@ header {
 
 /* ── nav ── */
 nav {
+  flex: 1;
   display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 4px;
+  gap: 20px;
   margin: 0 auto;
 }
 
@@ -68,7 +70,7 @@ nav {
   width: 20px;
   height: 2px;
   border-radius: 999px;
-  background: linear-gradient(90deg, #f97316, #db2777);
+  background: linear-gradient(90deg, #8A38F5, #FB2C36);
   opacity: 0;
   transition: opacity 0.15s;
 }
