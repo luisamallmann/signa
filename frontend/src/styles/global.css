@@ -27,7 +27,7 @@
 
 body {
   background: var(--escuro);
-  color: #fff;
+  color: var(--claro);
   min-height: 100vh;
   overflow-x: hidden;
 }
@@ -91,7 +91,7 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(251, 44, 54, 0.25), rgba(138, 56, 245, 0.25));
+  background: linear-gradient(90deg, rgba(251, 44, 54, 0.5), rgba(138, 56, 245, 0.5));
   opacity: 0;
   transition: opacity 0.3s ease;
   z-index: -1;
