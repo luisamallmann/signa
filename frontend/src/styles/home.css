@@ -154,10 +154,15 @@ h1 {
     width: 480px;
     height: 200px;
     opacity: 0.3;
-    background: var(--amarelo);
+    background: #ffb730b2;
     filter: blur(60px);
     pointer-events: none;
     z-index: 0;
+    transition: background 0.25s;
+}
+
+.card:hover .card-bg{
+    background: var(--amarelo);
 }
 
 .card h3 {
