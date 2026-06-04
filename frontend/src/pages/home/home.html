@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../../styles/home.css">
     <link rel="stylesheet" href="../../styles/global.css" />
     <link rel="stylesheet" href="../../styles/header.css" />
+    <link rel="stylesheet" href="../../styles/footer.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 </head>
@@ -29,8 +30,18 @@
                 de forma rápida e acessível.
             </p>
             <div class="botoes">
-                <button class="principal">Começar a Traduzir →</button>
-                <button class="secundario">Saiba Mais</button>
+                <button class="btn-principal">
+                    <div class="btn-content">
+                        <span>Começar a Traduzir</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M4.16699 10H15.8337" stroke="white" stroke-width="1.66667" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M10 4.16675L15.8333 10.0001L10 15.8334" stroke="white" stroke-width="1.66667"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                </button>
+                <button class="btn-secundario">Saiba Mais</button>
             </div>
         </div>
     </section>
@@ -44,32 +55,97 @@
         </p>
         <div class="cards">
             <div class="card">
+                <div class="card-bg"></div>
+                <div class="icone-card">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+                        <path
+                            d="M11.593 18.0833C11.4889 17.6795 11.2784 17.3111 10.9836 17.0162C10.6887 16.7214 10.3203 16.511 9.91651 16.4068L2.75902 14.5611C2.6369 14.5265 2.52943 14.4529 2.4529 14.3517C2.37637 14.2504 2.33496 14.1269 2.33496 14C2.33496 13.873 2.37637 13.7496 2.4529 13.6483C2.52943 13.547 2.6369 13.4735 2.75902 13.4388L9.91651 11.592C10.3201 11.4879 10.6885 11.2776 10.9833 10.983C11.2781 10.6884 11.4887 10.3202 11.593 9.91663L13.4387 2.75913C13.473 2.63654 13.5465 2.52853 13.6479 2.45159C13.7493 2.37465 13.8731 2.33301 14.0004 2.33301C14.1277 2.33301 14.2515 2.37465 14.353 2.45159C14.4544 2.52853 14.5279 2.63654 14.5622 2.75913L16.4067 9.91663C16.5108 10.3204 16.7213 10.6888 17.0161 10.9837C17.311 11.2785 17.6794 11.489 18.0832 11.5931L25.2407 13.4376C25.3638 13.4716 25.4723 13.545 25.5497 13.6466C25.627 13.7481 25.6689 13.8723 25.6689 14C25.6689 14.1276 25.627 14.2518 25.5497 14.3534C25.4723 14.455 25.3638 14.5283 25.2407 14.5623L18.0832 16.4068C17.6794 16.511 17.311 16.7214 17.0161 17.0162C16.7213 17.3111 16.5108 17.6795 16.4067 18.0833L14.561 25.2408C14.5267 25.3634 14.4532 25.4714 14.3518 25.5483C14.2504 25.6253 14.1266 25.6669 13.9993 25.6669C13.872 25.6669 13.7481 25.6253 13.6467 25.5483C13.5453 25.4714 13.4718 25.3634 13.4375 25.2408L11.593 18.0833Z"
+                            stroke="white" stroke-width="2.33333" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M23.333 3.5V8.16667" stroke="white" stroke-width="2.33333" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M25.6667 5.83325H21" stroke="white" stroke-width="2.33333" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M4.66699 19.8333V22.1666" stroke="white" stroke-width="2.33333" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M5.83333 21H3.5" stroke="white" stroke-width="2.33333" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </div>
                 <h3>Card</h3>
                 <p>Lorem Ipsum</p>
             </div>
             <div class="card">
+                <div class="card-bg"></div>
+                <div class="icone-card">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+                        <path
+                            d="M11.593 18.0833C11.4889 17.6795 11.2784 17.3111 10.9836 17.0162C10.6887 16.7214 10.3203 16.511 9.91651 16.4068L2.75902 14.5611C2.6369 14.5265 2.52943 14.4529 2.4529 14.3517C2.37637 14.2504 2.33496 14.1269 2.33496 14C2.33496 13.873 2.37637 13.7496 2.4529 13.6483C2.52943 13.547 2.6369 13.4735 2.75902 13.4388L9.91651 11.592C10.3201 11.4879 10.6885 11.2776 10.9833 10.983C11.2781 10.6884 11.4887 10.3202 11.593 9.91663L13.4387 2.75913C13.473 2.63654 13.5465 2.52853 13.6479 2.45159C13.7493 2.37465 13.8731 2.33301 14.0004 2.33301C14.1277 2.33301 14.2515 2.37465 14.353 2.45159C14.4544 2.52853 14.5279 2.63654 14.5622 2.75913L16.4067 9.91663C16.5108 10.3204 16.7213 10.6888 17.0161 10.9837C17.311 11.2785 17.6794 11.489 18.0832 11.5931L25.2407 13.4376C25.3638 13.4716 25.4723 13.545 25.5497 13.6466C25.627 13.7481 25.6689 13.8723 25.6689 14C25.6689 14.1276 25.627 14.2518 25.5497 14.3534C25.4723 14.455 25.3638 14.5283 25.2407 14.5623L18.0832 16.4068C17.6794 16.511 17.311 16.7214 17.0161 17.0162C16.7213 17.3111 16.5108 17.6795 16.4067 18.0833L14.561 25.2408C14.5267 25.3634 14.4532 25.4714 14.3518 25.5483C14.2504 25.6253 14.1266 25.6669 13.9993 25.6669C13.872 25.6669 13.7481 25.6253 13.6467 25.5483C13.5453 25.4714 13.4718 25.3634 13.4375 25.2408L11.593 18.0833Z"
+                            stroke="white" stroke-width="2.33333" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M23.333 3.5V8.16667" stroke="white" stroke-width="2.33333" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M25.6667 5.83325H21" stroke="white" stroke-width="2.33333" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M4.66699 19.8333V22.1666" stroke="white" stroke-width="2.33333" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M5.83333 21H3.5" stroke="white" stroke-width="2.33333" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </div>
                 <h3>Card</h3>
                 <p>Lorem Ipsum</p>
             </div>
             <div class="card">
+                <div class="card-bg"></div>
+                <div class="icone-card">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+                        <path
+                            d="M11.593 18.0833C11.4889 17.6795 11.2784 17.3111 10.9836 17.0162C10.6887 16.7214 10.3203 16.511 9.91651 16.4068L2.75902 14.5611C2.6369 14.5265 2.52943 14.4529 2.4529 14.3517C2.37637 14.2504 2.33496 14.1269 2.33496 14C2.33496 13.873 2.37637 13.7496 2.4529 13.6483C2.52943 13.547 2.6369 13.4735 2.75902 13.4388L9.91651 11.592C10.3201 11.4879 10.6885 11.2776 10.9833 10.983C11.2781 10.6884 11.4887 10.3202 11.593 9.91663L13.4387 2.75913C13.473 2.63654 13.5465 2.52853 13.6479 2.45159C13.7493 2.37465 13.8731 2.33301 14.0004 2.33301C14.1277 2.33301 14.2515 2.37465 14.353 2.45159C14.4544 2.52853 14.5279 2.63654 14.5622 2.75913L16.4067 9.91663C16.5108 10.3204 16.7213 10.6888 17.0161 10.9837C17.311 11.2785 17.6794 11.489 18.0832 11.5931L25.2407 13.4376C25.3638 13.4716 25.4723 13.545 25.5497 13.6466C25.627 13.7481 25.6689 13.8723 25.6689 14C25.6689 14.1276 25.627 14.2518 25.5497 14.3534C25.4723 14.455 25.3638 14.5283 25.2407 14.5623L18.0832 16.4068C17.6794 16.511 17.311 16.7214 17.0161 17.0162C16.7213 17.3111 16.5108 17.6795 16.4067 18.0833L14.561 25.2408C14.5267 25.3634 14.4532 25.4714 14.3518 25.5483C14.2504 25.6253 14.1266 25.6669 13.9993 25.6669C13.872 25.6669 13.7481 25.6253 13.6467 25.5483C13.5453 25.4714 13.4718 25.3634 13.4375 25.2408L11.593 18.0833Z"
+                            stroke="white" stroke-width="2.33333" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M23.333 3.5V8.16667" stroke="white" stroke-width="2.33333" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M25.6667 5.83325H21" stroke="white" stroke-width="2.33333" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M4.66699 19.8333V22.1666" stroke="white" stroke-width="2.33333" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M5.83333 21H3.5" stroke="white" stroke-width="2.33333" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </div>
                 <h3>Card</h3>
                 <p>Lorem Ipsum</p>
             </div>
         </div>
+        </div>
 
         <section class="sinal">
+            <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" fill="none">
+                <path
+                    d="M66.6683 87.5V79.1667C66.6683 74.7464 64.9124 70.5072 61.7867 67.3816C58.6611 64.256 54.4219 62.5 50.0016 62.5H25.0016C20.5814 62.5 16.3421 64.256 13.2165 67.3816C10.0909 70.5072 8.33496 74.7464 8.33496 79.1667V87.5"
+                    stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+                <path
+                    d="M37.5016 45.8333C46.7064 45.8333 54.1683 38.3714 54.1683 29.1667C54.1683 19.9619 46.7064 12.5 37.5016 12.5C28.2969 12.5 20.835 19.9619 20.835 29.1667C20.835 38.3714 28.2969 45.8333 37.5016 45.8333Z"
+                    stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+                <path
+                    d="M91.665 87.5003V79.167C91.6623 75.4742 90.4332 71.8869 88.1707 68.9683C85.9083 66.0497 82.7406 63.9652 79.165 63.042"
+                    stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+                <path
+                    d="M66.665 13.042C70.2501 13.9599 73.4277 16.0449 75.6969 18.9683C77.966 21.8917 79.1977 25.4871 79.1977 29.1878C79.1977 32.8885 77.966 36.484 75.6969 39.4074C73.4277 42.3307 70.2501 44.4157 66.665 45.3337"
+                    stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
             <h2>Experimente o Signa!</h2>
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Etiam varius, metus ut accumsan dignissim.
             </p>
-            <button>Cadastrar-se</button>
+            <button class="btn-white">Cadastrar-se</button>
         </section>
     </section>
 
     <script src="../../components/icons.js"></script>
     <script src="../../components/header.js"></script>
+    <script src="../../components/footer.js"></script>
     <script src="main.js"></script>
 
 </body>
+
 </html>

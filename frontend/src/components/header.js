@@ -7,7 +7,7 @@ const NAV_LINKS = [
 ]
 function Header(pageAtiva = 'Home') {
   const linksHTML = NAV_LINKS.map(link => `
-    <a href="${link.href}" class="nav-item" data-page="${link.label}">
+    <a href="${link.href}" class="nav-item ${link.label === pageAtiva ? 'active' : ''}" data-page="${link.label}">
       ${link.label}
       <span class="nav-underline"></span>
     </a>

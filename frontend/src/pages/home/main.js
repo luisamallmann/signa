@@ -8,3 +8,5 @@ app.innerHTML = `
 
   `
 initNavigation();
+
+document.body.insertAdjacentHTML('beforeend', Footer())

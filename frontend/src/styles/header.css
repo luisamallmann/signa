@@ -1,4 +1,25 @@
-/* ── header ── */
+@font-face {
+  font-family: 'Sora';
+  src: url('../assets/fonts/Space_Grotesk/SpaceGrotesk-VariableFont_wght.ttf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url('../assets/fonts/Space_Grotesk/SpaceGrotesk-VariableFont_wght.ttf') format('opentype');
+}
+
+
+
+:root {
+  --roxo: #8A38F5;
+  --amarelo: #FFB830;
+  --vermelho: #E11D35;
+  --escuro: #1c1c2e;
+  --claro: #f0f0f5;
+  --font-title: 'Sora', sans-serif;
+  --font-text: 'Space Grotesk', sans-serif;
+}
+
 header {
   position: fixed;
   top: 0;
@@ -11,13 +32,12 @@ header {
   z-index: 50;
 
   /* glassmorphism: fundo semi-transparente + desfoque */
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(18px) saturate(1.5);
+  background: rgba(0, 0, 0, 0.25);
   -webkit-backdrop-filter: blur(18px) saturate(1.5);
+  backdrop-filter: blur(18px) saturate(1.5);
   border-bottom: 0.5px solid rgba(255, 255, 255, 0.08);
 }
 
-/* ── logo ── */
 .logo {
   display: flex;
   align-items: center;
@@ -30,7 +50,6 @@ header {
   object-fit: contain;
 }
 
-/* ── nav ── */
 nav {
   flex: 1;
   display: flex;
@@ -48,9 +67,9 @@ nav {
   gap: 3px;
   font-size: 13.5px;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.55);
+  color: #fff;
   text-decoration: none;
-  padding: 6px 14px;
+  padding: 12px 12px 6px 12px;
   border-radius: 6px;
   transition: color 0.15s, background 0.15s;
   cursor: pointer;
@@ -62,15 +81,14 @@ nav {
 }
 
 .nav-item.active {
-  color: #fff;
+  color: var(--claro);
 }
 
-/* underline laranja/rosa — só aparece no item ativo */
 .nav-underline {
   width: 20px;
   height: 2px;
   border-radius: 999px;
-  background: linear-gradient(90deg, #8A38F5, #FB2C36);
+  background: linear-gradient(90deg, var(--vermelho), var(--roxo));
   opacity: 0;
   transition: opacity 0.15s;
 }
@@ -79,7 +97,6 @@ nav {
   opacity: 1;
 }
 
-/* ── ícones da direita ── */
 .header-icons {
   display: flex;
   align-items: center;
@@ -103,6 +120,6 @@ nav {
 }
 
 .icon-btn:hover {
-  color: #fff;
+  color: var(--claro);
   background: rgba(255, 255, 255, 0.08);
 }
