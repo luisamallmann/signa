@@ -1,1 +1,0 @@
-Comunicação com API/Backend

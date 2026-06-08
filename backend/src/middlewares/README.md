@@ -1,1 +1,0 @@
-verificações e filtros

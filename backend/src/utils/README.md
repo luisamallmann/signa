@@ -1,1 +1,0 @@
-FUnções auxiliares do backend
