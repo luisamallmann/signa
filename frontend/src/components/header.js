@@ -25,12 +25,12 @@ function Header(pageAtiva = 'Home') {
         <button class="icon-btn" aria-label="Notificações">
           ${IconBell()}
         </button>
-        <button class="icon-btn" aria-label="Configurações">
+        <a href="../configuracoes/configuracoes.html" class="icon-btn" aria-label="Configurações">
           ${IconSettings()}
-        </button>
-        <button class="icon-btn" aria-label="Perfil">
+        <a/>
+        <a href="../login/login.html" class="icon-btn" aria-label="Perfil">
           ${IconUser()}
-        </button>
+        </a>
       </div>
     </header>
   `
