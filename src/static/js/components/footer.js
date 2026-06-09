@@ -5,7 +5,7 @@ function Footer() {
 
             <div class="footer-brand">
                 <a href="/" class="logo">
-                    <img src="../../assets/images/logo.png" alt="Signa" />
+                    <img src="../static/assets/images/logo.png" alt="Signa" />
                 </a>
                 <p class="footer-desc">Quebrando barreiras de comunicação através da tecnologia e inovação.</p>
             </div>

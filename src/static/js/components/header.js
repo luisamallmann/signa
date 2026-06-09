@@ -16,7 +16,7 @@ function Header(pageAtiva = 'Home') {
   return `
     <header>
       <a href="/" class="logo">
-        <img src="../../assets/images/logo.png" alt="Signa Logo">
+        <img src="../static/assets/images/logo.png" alt="Signa Logo">
       </a>
 
       <nav>${linksHTML}</nav>
