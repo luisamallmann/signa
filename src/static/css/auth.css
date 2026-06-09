@@ -1,0 +1,51 @@
+@font-face {
+  font-family: 'Sora';
+  src: url('../assets/fonts/Space_Grotesk/SpaceGrotesk-VariableFont_wght.ttf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url('../assets/fonts/Space_Grotesk/SpaceGrotesk-VariableFont_wght.ttf') format('opentype');
+}
+
+
+:root {
+    --roxo: #8A38F5;
+    --amarelo: #FFB830;
+    --vermelho: #E11D35;
+    --escuro: #1c1c2e;
+    --claro: #f0f0f5;
+    --font-title: 'Sora', sans-serif;
+    --font-text: 'Space Grotesk', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-title);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-image: url("../assets/images/fundo-login.png");
+    background-size: cover;
+    background-size: 100%; /* ← limita a altura da imagem */
+    background-position: top center;
+    background-repeat: no-repeat;
+}
+
+.auth-section{
+    min-height: (100vh - 80px);
+    flex: 1;
+    display: flex;
+    padding: 150px 261px;
+    align-items: center;
+    gap: 184px;
+}
+
+.auth-img{
+    height: 658px;
+    border-radius: 24px;
+}
