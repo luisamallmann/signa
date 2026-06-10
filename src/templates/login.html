@@ -27,13 +27,21 @@
             <form id="form-login">
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" placeholder="seu@email.com" required>
-                <span class="erro" id="erro-email"></span>
+                {% if erro_email %}
+                <div class="error-message">
+                    {{ erro_email }}
+                </div>
+                {% endif %}
 
                 <label for="senha">Senha</label>
                 <div>
                     <input type="password" id="senha" name="senha" placeholder="••••••••" required>
                 </div>
-                <span class="erro" id="erro-senha"></span>
+                {% if erro_senha %}
+                <div class="error-message">
+                    {{ erro_senha }}
+                </div>
+                {% endif %}
 
                 <a href="">Esqueceu a senha?</a>
 
