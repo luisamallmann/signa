@@ -39,7 +39,6 @@ body {
 .auth-section {
     min-height: 914px;
     padding: 150px 261px 90px 261px;
-    align-items: center;
     display: flex;
     gap: 180px;
 }
@@ -113,6 +112,7 @@ body {
     align-items: center;
     border: 1px solid #f0f0f5ad;
     background: rgba(255, 255, 255, 0.20);
+    backdrop-filter: blur(50px);
 }
 
 .form-input::placeholder {
