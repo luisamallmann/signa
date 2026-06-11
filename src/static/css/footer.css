@@ -30,7 +30,7 @@
     justify-content: center;
     gap: 48px;
     align-self: stretch;
-
+    font-family: var(--font-text);
     /* glassmorphism */
     background: rgba(0, 0, 0, 0.25);
     backdrop-filter: blur(18px) saturate(1.5);
