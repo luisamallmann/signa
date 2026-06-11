@@ -23,10 +23,14 @@
 
         <div class="container-right">
             <div class="auth-header">
-                <h1 class="auth-title">Entrar</h1>
-                <p class="auth-subtitle">Faça login para continuar</p>
+                <h1 class="auth-title">Criar conta</h1>
+                <p class="auth-subtitle">Cadastre-se gratuitamente para continuar</p>
             </div>
+
             <form method="POST" class="auth-form">
+                <label class="form-label" for="nome">Nome</label>
+                <input class="form-input" name="nome" placeholder="Seu nome" required>
+
                 <label class="form-label" for="email">Email</label>
                 <input type="email" class="form-input" name="email" placeholder="seu@email.com" required>
                 {% if erro_email %}
@@ -35,9 +39,14 @@
                 </div>
                 {% endif %}
 
-                <label class="form-label" for="senha">Senha</label>
+                <label class="form-label" for="senha1">Senha</label>
                 <div>
-                    <input type="password" class="form-input" name="senha" placeholder="••••••••" required>
+                    <input type="password" class="form-input" name="senha1" placeholder="••••••••" required>
+                </div>
+
+                <label class="form-label" for="senha2">Confirmar senha</label>
+                <div>
+                    <input type="password" class="form-input" name="senha2" placeholder="••••••••" required>
                 </div>
                 {% if erro_senha %}
                 <div class="error-message">
@@ -45,41 +54,26 @@
                 </div>
                 {% endif %}
 
-                <div class="line-check">
-                    <div class="checkbox-wrapper-4">
-                        <input class="inp-cbx" id="lembrar" type="checkbox" />
-                        <label class="cbx" for="lembrar"><span>
-                                <svg width="12px" height="10px">
-                                    <use xlink:href="#check-4"></use>
-                                </svg></span><span class="line-label">Lembrar de mim</span></label>
-                        <svg class="inline-svg">
-                            <symbol id="check-4" viewbox="0 0 12 10">
-                                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                            </symbol>
+                <button class="form-auth-btn" type="submit">
+                    <div class="btn-content">
+                        <span>Criar Conta</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M4.16675 10H15.8334" stroke="#8A38F5" stroke-width="1.66667" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M10 4.16675L15.8333 10.0001L10 15.8334" stroke="#8A38F5" stroke-width="1.66667"
+                                stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
-                </div>
-                <a class="link" href="">Esqueceu a senha?</a>
-        </div>
+                    </div>
+                </button>
+            </form>
 
-        <button class="form-auth-btn" type="submit">
-            <div class="btn-content">
-                <span>Entrar</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <path d="M4.16675 10H15.8334" stroke="#8A38F5" stroke-width="1.66667" stroke-linecap="round"
-                        stroke-linejoin="round" />
-                    <path d="M10 4.16675L15.8333 10.0001L10 15.8334" stroke="#8A38F5" stroke-width="1.66667"
-                        stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
+            <div class="line">
+                <div class="horizontal-line"></div>
+                <p class="line-label">Ou continue com</p>
+                <div class="horizontal-line"></div>
             </div>
-        </button>
-        </form>
-        <div class="line">
-            <div class="horizontal-line"></div>
-            <p class="line-label">Ou continue com</p>
-            <div class="horizontal-line"></div>
-        </div>
 
-        <div class="auth-btn-container">
+            <div class="auth-btn-container">
             <button class="auth-btn" type="button">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                     <path
@@ -97,9 +91,11 @@
                 Apple</button>
         </div>
 
-        <div class="line">
-            <p class="line-label">Não possui conta?</p><a class="link" href="/auth/cadastro">Cadastre-se</a>
-        </div>
+            <div class="line">
+                <p class="line-label">Possui conta?</p>
+                <a class="link" href="/auth/login">Entre</a>
+            </div>
+
         </div>
     </section>
 

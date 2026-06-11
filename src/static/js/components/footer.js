@@ -1,6 +1,6 @@
 function Footer() {
     return `
-    <footer><footer class="footer">
+    <footer class="footer">
         <div class="footer-content">
 
             <div class="footer-brand">
@@ -14,10 +14,10 @@ function Footer() {
                 <h4>Navegação</h4>
                 <ul>
                     <li><a href="/">Home</a></li>
-                    <li><a href="/src/pages/tradutor/">Tradutor</a></li>
-                    <li><a href="/src/pages/como-funciona/">Como Funciona</a></li>
-                    <li><a href="/src/pages/sobre/">Sobre</a></li>
-                    <li><a href="/src/pages/contato/">Contato</a></li>
+                    <li><a href="/tradutor">Tradutor</a></li>
+                    <li><a href="/como-funciona">Como Funciona</a></li>
+                    <li><a href="/sobre">Sobre</a></li>
+                    <li><a href="/contato">Contato</a></li>
                 </ul>
             </div>
 

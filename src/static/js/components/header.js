@@ -1,9 +1,9 @@
 const NAV_LINKS = [
   { label: "Home",          href: "/" },
-  { label: "Tradutor",      href: "/pages/tradutor/" },
-  { label: "Como Funciona", href: "/pages/como-funciona/" },
-  { label: "Sobre",         href: "/pages/sobre/" },
-  { label: "Contato",       href: "/pages/contato/" },
+  { label: "Tradutor",      href: "/tradutor" },
+  { label: "Como Funciona", href: "/como-funciona" },
+  { label: "Sobre",         href: "/sobre" },
+  { label: "Contato",       href: "/contato" },
 ]
 function Header(pageAtiva = 'Home') {
   const linksHTML = NAV_LINKS.map(link => `
@@ -25,10 +25,10 @@ function Header(pageAtiva = 'Home') {
         <button class="icon-btn" aria-label="Notificações">
           ${IconBell()}
         </button>
-        <a href="../configuracoes/configuracoes.html" class="icon-btn" aria-label="Configurações">
+        <a href="../configuracoes" class="icon-btn" aria-label="Configurações">
           ${IconSettings()}
-        <a/>
-        <a href="../login/login.html" class="icon-btn" aria-label="Perfil">
+        </a>
+        <a href="/auth/login" class="icon-btn" aria-label="Perfil">
           ${IconUser()}
         </a>
       </div>
@@ -41,7 +41,7 @@ function initNavigation() {
 
   links.forEach(link => {
     link.addEventListener('click', (e) => {
-      e.preventDefault()
+      //e.preventDefault()
 
       links.forEach(l => l.classList.remove('active'))
 

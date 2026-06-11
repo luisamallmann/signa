@@ -28,8 +28,8 @@
 body {
   background: var(--escuro);
   color: var(--claro);
-  min-height: 100vh;
   overflow-x: hidden;
+  min-height: 100vh;
 }
 
 /* container geral da página */
