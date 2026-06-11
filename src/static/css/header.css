@@ -60,6 +60,7 @@ nav {
 }
 
 .nav-item {
+  font-family: var(--font-text);
   position: relative;
   display: flex;
   flex-direction: column;
