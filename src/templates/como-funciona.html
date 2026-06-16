@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Como Funciona — SIGNA</title>
+
+  <link rel="stylesheet" href="../static/css/global.css" />
+  <link rel="stylesheet" href="../static/css/header.css" />
+  <link rel="stylesheet" href="../static/css/footer.css" />
+  <link rel="stylesheet" href="../static/css/como-funciona.css" />
+</head>
+
+<body>
+
+  <!-- O header vai ser injetado aqui pelo JS -->
+  <div id="app"></div>
+
+  <!-- ======= CONTEÚDO DA PÁGINA ======= -->
+  <main class="cf-page">
+
+    <!-- Título da seção -->
+    <section class="cf-hero">
+      <h1>Como Funciona</h1>
+      <p>Entenda o processo de tradução de Libras para Português em 4 etapas simples.</p>
+    </section>
+
+    <!-- Etapas alternadas (imagem + texto) -->
+    <section class="cf-etapas">
+
+      <!-- Etapa 1 — imagem à esquerda, texto à direita -->
+      <div class="cf-etapa">
+        <div class="cf-imagem">
+          <img src="../static/assets/images/captura-video.jpg" alt="Mão fazendo sinal em Libras" />
+        </div>
+        <div class="cf-conteudo">
+          <span class="cf-numero">1</span>
+          <h2>Captura de Vídeo</h2>
+          <p>
+            Nossa câmera inteligente captura os sinais de Libras em
+            tempo real com alta precisão usando visão computacional avançada.
+          </p>
+        </div>
+      </div>
+
+      <!-- Etapa 2 — texto à esquerda, imagem à direita -->
+      <div class="cf-etapa cf-etapa--invertida">
+        <div class="cf-conteudo">
+          <span class="cf-numero">2</span>
+          <h2>Processamento com IA</h2>
+          <p>
+            Algoritmos de machine learning analisam e interpretam
+            cada movimento das mãos, reconhecendo padrões complexos.
+          </p>
+        </div>
+        <div class="cf-imagem">
+          <img src="../static/assets/images/processamento-ia.jpg" alt="Mãos com efeitos digitais de IA" />
+        </div>
+      </div>
+
+      <!-- Etapa 3 — imagem à esquerda, texto à direita -->
+      <div class="cf-etapa">
+        <div class="cf-imagem">
+          <img src="../static/assets/images/traducao.jpg" alt="Tela com tradução instantânea" />
+        </div>
+        <div class="cf-conteudo">
+          <span class="cf-numero">3</span>
+          <h2>Tradução Instantânea</h2>
+          <p>
+            Os sinais são convertidos em texto português claro e
+            compreensível em segundos.
+          </p>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+  <!-- ======= FIM DO CONTEÚDO ======= -->
+
+  <!-- Scripts — mesma ordem do home.js -->
+  <script src="../static/js/components/icons.js"></script>
+  <script src="../static/js/components/header.js"></script>
+  <script src="../static/js/components/footer.js"></script>
+  <script src="../static/js/pages/como-funciona.js"></script>
+
+</body>
+</html>
