@@ -1,6 +1,3 @@
-// como-funciona.js
-// Importa o header e footer, igual ao home.js
-
 const app = document.getElementById('app');
 
 app.innerHTML = `

@@ -9,5 +9,9 @@ app.register_blueprint(auth, url_prefix='/auth')
 def home():
     return render_template('home.html')
 
+@app.route('/como-funciona', methods=['GET'])
+def cf():
+    return render_template('como-funciona.html')
+
 if __name__ == '__main__':
     app.run(debug=True)

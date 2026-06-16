@@ -29,7 +29,7 @@
 body {
     background-image: url("../assets/images/fundo-hero.png");
     background-size: cover;
-    background-size: 100%; /* ← limita a altura da imagem */
+    background-size: 100%;
     background-position: top center;
     background-repeat: no-repeat;
 }
@@ -161,7 +161,7 @@ h1 {
     transition: background 0.25s;
 }
 
-.card:hover .card-bg{
+.card:hover .card-bg {
     background: var(--amarelo);
 }
 
@@ -209,6 +209,93 @@ h1 {
     line-height: normal;
 }
 
-.footer{
-  margin-top: -400px;
+.footer {
+    margin-top: -400px;
+}
+
+@media (max-width: 1024px) {
+    h1 {
+        font-size: 52px;
+    }
+
+    .cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 90%;
+    }
+
+    .sinal {
+        width: 95%;
+        padding: 60px 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 140px 24px 100px;
+    }
+
+    h1 {
+        font-size: 36px;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.35);
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .footer {
+        margin-top: -150px;
+    }
+
+    .hero {
+        position: relative;
+        z-index: 1;
+        padding: 120px 24px 80px;
+    }
+
+    h1 {
+        font-size: 40px;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+
+    .botoes {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .tecnologia {
+        width: 100%;
+        border-radius: 24px 24px 0 0;
+        padding: 40px 24px 200px;
+    }
+
+    .sinal {
+        width: 95%;
+        padding: 48px 24px;
+        gap: 32px;
+    }
+
+    .sinal h2 {
+        font-size: 28px;
+    }
+
+    .sinal p {
+        font-size: 16px;
+    }
 }

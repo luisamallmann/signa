@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Sora';
-  src: url('../assets/fonts/Space_Grotesk/SpaceGrotesk-VariableFont_wght.ttf') format('opentype');
+  src: url('../assets/fonts/Sora/Sora-VariableFont_wght.ttf') format('opentype');
 }
 
 @font-face {
@@ -134,4 +134,31 @@ footer h4 {
 .social-btn:hover {
     transition: background 0.25s, border-color 0.25s;
     background: rgba(255, 255, 255, 0.40);
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 48px 24px;
+    height: auto;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 32px;
+    align-items: flex-start;
+  }
+
+  .footer-brand {
+    width: 100%;
+    height: auto;
+  }
+
+  .footer-col {
+    width: 100%;
+    height: auto;
+  }
+
+  .footer-col ul {
+    height: auto;
+  }
 }
