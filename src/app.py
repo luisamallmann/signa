@@ -13,5 +13,9 @@ def home():
 def cf():
     return render_template('como-funciona.html')
 
+@app.route('/tradutor', methods=['GET'])
+def trad():
+    return render_template('tradutor.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
