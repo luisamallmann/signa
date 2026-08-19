@@ -87,7 +87,7 @@ h1 {
     width: 95%;
     max-width: 1700px;
     margin: 0 auto;
-    padding: 70px 40px 470px 40px;
+    padding: 70px 40px 550px 40px;
     border-radius: 40px 40px 0px 0px;
     background: rgba(49, 63, 134, 0.18);
     backdrop-filter: blur(50px);
@@ -178,7 +178,9 @@ h1 {
 /* BLOCO COLORIDO */
 
 .sinal {
-    margin-top: 48px;
+    margin-top: 100px;
+    position: relative;
+    z-index: 1;
     display: flex;
     width: 1620px;
     padding: 100px 142px;
@@ -228,6 +230,7 @@ h1 {
     }
 
     .sinal {
+        margin-top: -400px;
         width: 95%;
         padding: 60px 40px;
     }
@@ -286,6 +289,7 @@ h1 {
     }
 
     .sinal {
+        margin-top: -180px;
         width: 95%;
         padding: 48px 24px;
         gap: 32px;
