@@ -1,0 +1,199 @@
+body {
+    background-image: url("../assets/images/fundo-sobre.png");
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+.sobre-page {
+    padding-top: 80px;
+}
+
+
+.missao {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    padding: 120px 40px;
+    text-align: center;
+
+    .missao::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 220px;
+        background: linear-gradient(to bottom, transparent, #0d0d1a);
+        pointer-events: none;
+        z-index: 1;
+    }
+}
+
+.brilho {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 340px;
+    height: 340px;
+    border-radius: 50%;
+    filter: blur(90px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.brilho--esquerda {
+    left: -80px;
+    background: radial-gradient(circle, #ffb830cc 0%, #e11d3580 50%, transparent 75%);
+}
+
+.brilho--direita {
+    right: -80px;
+    background: radial-gradient(circle, #ffb830cc 0%, #8a38f580 50%, transparent 75%);
+}
+
+.missao-conteudo {
+    position: relative;
+    z-index: 1;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.missao-conteudo h1 {
+    font-family: var(--font-title);
+    font-size: 52px;
+    font-weight: 800;
+    /* gradiente vermelho → roxo igual ao .rosa do home */
+    background: linear-gradient(90deg, var(--vermelho), var(--roxo));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+
+.missao-conteudo p {
+    font-family: var(--font-text);
+    font-size: 17px;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.75;
+}
+
+
+.valores {
+    margin: 0 auto 80px;
+    max-width: 1200px;
+    width: calc(100% - 80px);
+    padding: 60px 56px 70px;
+    border-radius: 24px;
+
+
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    text-align: center;
+}
+
+.valores h2 {
+    font-family: var(--font-title);
+    font-size: 40px;
+    font-weight: 800;
+    background: linear-gradient(90deg, var(--vermelho), var(--roxo));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+
+.valores-subtitulo {
+    margin-top: 12px;
+    font-family: var(--font-text);
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.60);
+}
+
+
+.valores-cards {
+    display: flex;
+    gap: 20px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+.vcard {
+    flex: 1;
+    min-width: 200px;
+    max-width: 340px;
+    padding: 24px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    text-align: left;
+    transition: background 0.25s, border-color 0.25s;
+}
+
+.vcard:hover {
+    background: rgba(255, 255, 255, 0.10);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.vcard-icone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--vermelho), var(--roxo));
+    box-shadow: 0 4px 16px rgba(138, 56, 245, 0.35);
+}
+
+.vcard h3 {
+    font-family: var(--font-title);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--claro);
+}
+
+.vcard p {
+    font-family: var(--font-text);
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.60);
+    line-height: 1.6;
+}
+
+
+@media (max-width: 768px) {
+    .missao-conteudo h1 {
+        font-size: 36px;
+    }
+
+    .valores {
+        width: calc(100% - 32px);
+        padding: 40px 24px 50px;
+    }
+
+    .valores h2 {
+        font-size: 28px;
+    }
+
+    .valores-cards {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .vcard {
+        max-width: 100%;
+    }
+}

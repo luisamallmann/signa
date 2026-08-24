@@ -1,13 +1,14 @@
 body {
-  background-image: url("../assets/images/fundo-hero.png");
-  background-size: cover;
-  background-position: top center;
-  background-repeat: no-repeat;
-  min-height: 100vh;
+  background-image: url("../assets/images/fundo-como-funciona.png");
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+
 }
 
 .cf-page {
-  padding-top: 80px; /* mesma altura do header */
+  padding-top: 80px; 
 }
 
 .cf-hero {
