@@ -1,0 +1,377 @@
+/* =============================================
+   configuracoes.css
+   Usado tanto em configuracoes.html quanto privacidade.html
+   ============================================= */
+
+body {
+  /* Quando tiver a imagem do Figma, troque pelo caminho correto */
+  background-image: url("../assets/images/fundo-configuracoes.png");
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+
+  /* Fallback caso a imagem não carregue */
+  background-color: #1a0e2e;
+  min-height: 100vh;
+}
+
+/* =============================================
+   PÁGINA GERAL
+   ============================================= */
+.config-page,
+.priv-page {
+  padding-top: 80px; /* altura do header fixo */
+  padding-bottom: 80px;
+}
+
+/* =============================================
+   HERO — Título da página
+   ============================================= */
+.config-hero,
+.priv-hero {
+  padding: 60px 0 32px;
+  max-width: 700px;
+  margin: 0 auto;
+  padding-left: 40px;
+}
+
+.config-hero h1 {
+  font-family: var(--font-title);
+  font-size: 42px;
+  font-weight: 800;
+  color: var(--claro);
+}
+
+.config-hero p {
+  margin-top: 8px;
+  font-family: var(--font-text);
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* =============================================
+   LISTA DE ITENS DE CONFIGURAÇÃO
+   ============================================= */
+.config-lista {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Item base */
+.config-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.config-item:hover {
+  background: rgba(255, 255, 255, 0.09);
+}
+
+/* Item com subopção (Notificações) */
+.config-item--destaque {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.config-item-esquerda {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  flex: 1;
+}
+
+/* Ícone redondo */
+.config-icone {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.config-icone--roxo {
+  background: linear-gradient(135deg, var(--vermelho), var(--roxo));
+}
+
+.config-icone--vermelho {
+  background: var(--vermelho);
+}
+
+/* Textos do item */
+.config-texto {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.config-titulo-item {
+  font-family: var(--font-title);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--claro);
+}
+
+.config-subtitulo-item {
+  font-family: var(--font-text);
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.50);
+}
+
+/* Sub-opção dentro de Notificações */
+.config-sub-opcao {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.config-sub-opcao span:first-child {
+  font-family: var(--font-text);
+  font-size: 14px;
+  color: var(--claro);
+}
+
+.config-desc {
+  font-family: var(--font-text);
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* Seta do lado direito */
+.config-seta {
+  min-width: 18px;
+  opacity: 0.5;
+}
+
+/* =============================================
+   TOGGLE (interruptor on/off)
+   ============================================= */
+.toggle {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 26px;
+  min-width: 48px;
+  margin-top: 4px;
+}
+
+.toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.20);
+  cursor: pointer;
+  transition: background 0.25s;
+}
+
+.toggle-slider::before {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 3px;
+  top: 3px;
+  border-radius: 50%;
+  background: white;
+  transition: transform 0.25s;
+}
+
+.toggle input:checked + .toggle-slider {
+  background: linear-gradient(90deg, var(--vermelho), var(--roxo));
+}
+
+.toggle input:checked + .toggle-slider::before {
+  transform: translateX(22px);
+}
+
+/* =============================================
+   PÁGINA PRIVACIDADE — Hero com voltar
+   ============================================= */
+.priv-hero {
+  padding: 48px 40px 24px;
+}
+
+.priv-voltar {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-text);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+  margin-bottom: 20px;
+  transition: color 0.2s;
+}
+
+.priv-voltar:hover {
+  color: var(--claro);
+}
+
+.priv-hero h1 {
+  font-family: var(--font-title);
+  font-size: 42px;
+  font-weight: 800;
+  color: var(--claro);
+}
+
+.priv-hero p {
+  margin-top: 8px;
+  font-family: var(--font-text);
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* =============================================
+   BLOCOS DE PRIVACIDADE
+   ============================================= */
+.priv-lista {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Bloco container (agrupa itens relacionados) */
+.priv-bloco {
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+
+/* Cabeçalho do bloco */
+.priv-bloco-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 20px 12px;
+}
+
+.priv-bloco-header .config-texto span:first-child {
+  font-family: var(--font-title);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--claro);
+}
+
+.priv-bloco-header .config-texto span:last-child {
+  font-family: var(--font-text);
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.50);
+}
+
+/* Divisor interno */
+.priv-divisor {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.07);
+  margin: 0 20px;
+}
+
+/* Linha de toggle dentro do bloco */
+.priv-linha {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+}
+
+.priv-linha-texto {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.priv-linha-titulo {
+  font-family: var(--font-text);
+  font-size: 14px;
+  color: var(--claro);
+}
+
+.priv-linha-desc {
+  font-family: var(--font-text);
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* Bloco de Zona de Perigo */
+.priv-bloco--perigo {
+  border-color: rgba(225, 29, 53, 0.30);
+  background: rgba(225, 29, 53, 0.06);
+}
+
+.priv-bloco--perigo .priv-bloco-header .config-icone {
+  background: var(--vermelho);
+}
+
+.priv-bloco--perigo .config-titulo-item {
+  color: var(--vermelho);
+}
+
+/* Botão apagar conta */
+.btn-perigo {
+  display: block;
+  margin: 4px 20px 18px;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: rgba(225, 29, 53, 0.25);
+  color: var(--vermelho);
+  font-family: var(--font-title);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  width: calc(100% - 40px);
+  transition: background 0.2s;
+}
+
+.btn-perigo:hover {
+  background: rgba(225, 29, 53, 0.40);
+}
+
+/* =============================================
+   RESPONSIVO — celular
+   ============================================= */
+@media (max-width: 768px) {
+  .config-hero,
+  .priv-hero {
+    padding-left: 24px;
+  }
+
+  .config-hero h1,
+  .priv-hero h1 {
+    font-size: 30px;
+  }
+
+  .config-lista,
+  .priv-lista {
+    padding: 0 24px;
+  }
+}

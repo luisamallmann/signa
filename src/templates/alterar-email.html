@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alterar Email — SIGNA</title>
+
+  <link rel="stylesheet" href="../static/css/global.css" />
+  <link rel="stylesheet" href="../static/css/header.css" />
+  <link rel="stylesheet" href="../static/css/footer.css" />
+  <link rel="stylesheet" href="../static/css/configuracoes.css" />
+  <link rel="stylesheet" href="../static/css/alterar.css" />
+</head>
+
+<body>
+
+  <div id="app"></div>
+
+  <main class="alterar-page">
+
+    <section class="alterar-hero">
+      <a href="configuracoes.html" class="priv-voltar">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <path d="M19 12H5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12 19l-7-7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Voltar para configurações
+      </a>
+      <h1>Alterar Email</h1>
+      <p>Escolha um email associado à sua conta</p>
+    </section>
+
+    <section class="alterar-form">
+
+      <div class="campo-grupo">
+        <label>Email Atual</label>
+        <input type="email" placeholder="email@atual.com" />
+      </div>
+
+      <div class="campo-grupo">
+        <label>Novo Email</label>
+        <input type="email" placeholder="novo@email.com" />
+      </div>
+
+      <div class="campo-grupo">
+        <label>Confirme sua Senha</label>
+        <input type="password" placeholder="••••••••" />
+      </div>
+
+      <a href="verificar-codigo.html" class="btn-alterar">
+        Enviar Código →
+      </a>
+
+      <div class="alterar-aviso">
+        <div class="aviso-header">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="12" y1="9" x2="12" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="12" y1="17" x2="12.01" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Atenção</span>
+        </div>
+        <p>
+          Você precisará verificar seu novo endereço de email antes de finalizar a alteração. Um código de verificação será enviado para o novo email informado.
+        </p>
+      </div>
+
+    </section>
+
+  </main>
+
+  <script src="../static/js/components/icons.js"></script>
+  <script src="../static/js/components/header.js"></script>
+  <script src="../static/js/components/footer.js"></script>
+  <script src="../static/js/pages/alterar-email.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,307 @@
+/* =============================================
+   alterar.css
+   Usado em: alterar-email.html, alterar-senha.html, verificar-codigo.html
+   ============================================= */
+
+body {
+  background-image: url("../assets/images/fundo-configuracoes.png");
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-color: #1a0e2e;
+  min-height: 100vh;
+}
+
+.alterar-page {
+  padding-top: 80px;
+  padding-bottom: 100px;
+}
+
+/* =============================================
+   HERO / TÍTULO
+   ============================================= */
+.alterar-hero {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 52px 40px 28px;
+}
+
+/* Versão centralizada (verificar código) */
+.alterar-hero--centro {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.alterar-hero h1 {
+  font-family: var(--font-title);
+  font-size: 38px;
+  font-weight: 800;
+  color: var(--claro);
+  margin-top: 8px;
+}
+
+.alterar-hero p {
+  margin-top: 6px;
+  font-family: var(--font-text);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* Ícone grande centralizado (verificar código) */
+.verificar-icone {
+  width: 60px;
+  height: 60px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, var(--vermelho), var(--roxo));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 24px rgba(138, 56, 245, 0.40);
+  margin-bottom: 4px;
+}
+
+/* Link voltar centralizado */
+.priv-voltar--centro {
+  align-self: center;
+}
+
+/* =============================================
+   FORMULÁRIO
+   ============================================= */
+.alterar-form {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Versão centralizada (verificar código) */
+.alterar-form--centro {
+  align-items: center;
+}
+
+/* Label + Input */
+.campo-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.campo-grupo label {
+  font-family: var(--font-text);
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.campo-grupo input {
+  width: 100%;
+  padding: 13px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--claro);
+  font-family: var(--font-text);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.campo-grupo input::placeholder {
+  color: rgba(255, 255, 255, 0.30);
+}
+
+.campo-grupo input:focus {
+  border-color: rgba(138, 56, 245, 0.55);
+  background: rgba(255, 255, 255, 0.10);
+}
+
+/* =============================================
+   BOTÃO PRINCIPAL
+   ============================================= */
+.btn-alterar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(90deg, var(--vermelho), var(--roxo));
+  color: #fff;
+  font-family: var(--font-title);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.15s;
+  margin-top: 4px;
+}
+
+.btn-alterar:hover {
+  opacity: 0.88;
+  transform: translateY(-2px);
+}
+
+/* Variação roxa (verificar código) */
+.btn-alterar--roxo {
+  background: linear-gradient(90deg, var(--roxo), #5b1fe0);
+  width: 100%;
+  max-width: 400px;
+}
+
+/* =============================================
+   AVISO (caixa amarela/laranja — alterar email)
+   ============================================= */
+.alterar-aviso {
+  padding: 16px 18px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 184, 48, 0.25);
+  background: rgba(255, 184, 48, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.aviso-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--amarelo);
+  font-family: var(--font-title);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.alterar-aviso p {
+  font-family: var(--font-text);
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.60);
+  line-height: 1.6;
+}
+
+/* =============================================
+   INFO (caixa azul/escura — alterar senha)
+   ============================================= */
+.alterar-info {
+  padding: 16px 18px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.alterar-info p {
+  font-family: var(--font-text);
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.6;
+}
+
+.alterar-info strong {
+  color: var(--claro);
+  font-weight: 600;
+}
+
+/* =============================================
+   INPUTS DO CÓDIGO (6 caixinhas — verificar código)
+   ============================================= */
+.codigo-inputs {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 8px 0;
+}
+
+.codigo-digito {
+  width: 52px;
+  height: 58px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--claro);
+  font-family: var(--font-title);
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+  -moz-appearance: textfield;
+}
+
+.codigo-digito:focus {
+  border-color: var(--roxo);
+  background: rgba(138, 56, 245, 0.12);
+}
+
+/* Remove setas dos inputs numéricos */
+.codigo-digito::-webkit-outer-spin-button,
+.codigo-digito::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+/* =============================================
+   BOTÕES EXTRAS (verificar código)
+   ============================================= */
+.btn-reenviar {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.65);
+  font-family: var(--font-text);
+  font-size: 14px;
+  padding: 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  width: 100%;
+  max-width: 400px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-reenviar:hover {
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--claro);
+}
+
+.link-voltar-config {
+  font-family: var(--font-text);
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.45);
+  text-decoration: none;
+  margin-top: 4px;
+  transition: color 0.2s;
+}
+
+.link-voltar-config:hover {
+  color: var(--claro);
+}
+
+/* =============================================
+   RESPONSIVO
+   ============================================= */
+@media (max-width: 768px) {
+  .alterar-hero,
+  .alterar-form {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .alterar-hero h1 {
+    font-size: 28px;
+  }
+
+  .codigo-digito {
+    width: 42px;
+    height: 48px;
+    font-size: 20px;
+  }
+}

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacidade e Dados — SIGNA</title>
+
+  <link rel="stylesheet" href="../static/css/global.css" />
+  <link rel="stylesheet" href="../static/css/header.css" />
+  <link rel="stylesheet" href="../static/css/footer.css" />
+  <link rel="stylesheet" href="../static/css/configuracoes.css" />
+</head>
+
+<body>
+
+  <div id="app"></div>
+
+  <main class="priv-page">
+
+    <section class="priv-hero">
+      <a href="configuracoes.html" class="priv-voltar">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <path d="M19 12H5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12 19l-7-7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Voltar para configurações
+      </a>
+      <h1>Privacidade e Dados</h1>
+      <p>Gerencie como seus dados são usados e compartilhados</p>
+    </section>
+
+    <section class="priv-lista">
+
+      <div class="priv-bloco">
+        <div class="priv-bloco-header">
+          <div class="config-icone config-icone--roxo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <ellipse cx="12" cy="5" rx="9" ry="3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="config-texto">
+            <span class="config-titulo-item">Uso de Dados</span>
+            <span class="config-subtitulo-item">Como usamos seus dados</span>
+          </div>
+        </div>
+
+        <div class="priv-divisor"></div>
+
+        <div class="priv-linha">
+          <div class="priv-linha-texto">
+            <span class="priv-linha-titulo">Compartilhar Dados de Uso</span>
+            <span class="priv-linha-desc">Ajuda a manter o Signa compartilhando dados anônimos</span>
+          </div>
+          <label class="toggle">
+            <input type="checkbox" />
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <div class="priv-divisor"></div>
+
+        <div class="priv-linha">
+          <div class="priv-linha-texto">
+            <span class="priv-linha-titulo">Rastreamento de Análise</span>
+            <span class="priv-linha-desc">Permite análises para melhorar sua experiência</span>
+          </div>
+          <label class="toggle">
+            <input type="checkbox" />
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="priv-bloco priv-bloco--perigo">
+        <div class="priv-bloco-header">
+          <div class="config-icone config-icone--vermelho">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <line x1="12" y1="9" x2="12" y2="13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <line x1="12" y1="17" x2="12.01" y2="17" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="config-texto">
+            <span class="config-titulo-item">Zona de Perigo</span>
+            <span class="config-subtitulo-item">Ações irreversíveis</span>
+          </div>
+        </div>
+
+        <button class="btn-perigo">Apagar Minha Conta</button>
+      </div>
+
+    </section>
+
+  </main>
+
+  <script src="../static/js/components/icons.js"></script>
+  <script src="../static/js/components/header.js"></script>
+  <script src="../static/js/components/footer.js"></script>
+  <script src="../static/js/pages/privacidade.js"></script>
+
+</body>
+</html>
