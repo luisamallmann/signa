@@ -63,3 +63,13 @@ def cadastro():
     conn.close()
 
     return redirect(url_for('home.html'))
+
+def alt_senha():
+    if request.method == 'GET':
+        return render_template('alterar-senha.html')
+
+# pessoa bota email -> recebe codigo pelo email -> depois redireciona p/ página de colocar o código -> página pra confirmar nova senha e vida q segue
+
+def alt_email():
+    if request.method == 'GET':
+        return render_template('alterar-email.html')
