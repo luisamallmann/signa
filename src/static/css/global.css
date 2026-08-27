@@ -32,11 +32,6 @@ body {
   min-height: 100vh;
 }
 
-/* container geral da página */
-#app {
-  position: relative;
-}
-
 .btn-principal {
   display: flex;
   width: 209px;
@@ -111,6 +106,69 @@ body {
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
+}
+
+.icone-card {
+    display: flex;
+    width: 56px;
+    height: 56px;
+    padding: 12px;
+    border-radius: 16px;
+    justify-content: center;
+    background: linear-gradient(144deg, var(--vermelho) -16.18%, var(--amarelo) 84.38%);
+    box-shadow: 0 4px 20px 0 rgba(255, 184, 48, 0.37);
+    z-index: 1;
+}
+
+
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 60px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 523px;
+    height: 242px;
+    padding: 30px;
+    border-radius: 24px;
+    border: 1px solid #fff7e82d;
+    background: #0000003a;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.card-bg {
+    position: absolute;
+    width: 480px;
+    height: 200px;
+    opacity: 0.3;
+    background: #ffb730b2;
+    filter: blur(60px);
+    pointer-events: none;
+    z-index: 0;
+    transition: background 0.25s;
+}
+
+.card:hover .card-bg {
+    background: var(--amarelo);
+}
+
+.card h3 {
+    margin-top: 12px;
+    z-index: 1;
+}
+
+.card p {
+    color: rgba(255, 255, 255, 0.75);
+    z-index: 1;
 }
 
 @media (max-width: 768px) {
