@@ -17,5 +17,13 @@ def cf():
 def trad():
     return render_template('tradutor.html')
 
+@app.route('/sobre', methods=['GET'])
+def sobre():
+    return render_template('sobre.html')
+
+@app.route('/contato', methods=['GET'])
+def contato():
+    return render_template('contato.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
