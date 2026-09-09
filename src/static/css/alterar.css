@@ -94,6 +94,7 @@ line-height: 27px; /* 150% */
 }
 
 .container {
+  margin-top: 100px;
   display: flex;
   width: 543px;
   flex-direction: column;
