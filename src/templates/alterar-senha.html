@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="../static/css/global.css" />
   <link rel="stylesheet" href="../static/css/header.css" />
   <link rel="stylesheet" href="../static/css/footer.css" />
-  <link rel="stylesheet" href="../static/css/configuracoes.css" />
   <link rel="stylesheet" href="../static/css/alterar.css" />
 </head>
 
@@ -17,41 +16,59 @@
 
   <div id="app"></div>
 
-  <main class="alterar-page">
-
-    <section class="alterar-hero">
-      <a href="configuracoes.html" class="priv-voltar">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none">
-          <path d="M19 12H5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M12 19l-7-7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        Voltar para configurações
-      </a>
-      <h1>Alterar Senha</h1>
-      <p>Crie uma senha de fácil lembrança para você</p>
-    </section>
-
-    <section class="alterar-form">
-
-      <div class="campo-grupo">
-        <label>Email</label>
-        <input type="email" placeholder="seu@email.com" />
+  <div id="recuperar-senha">
+    <section class="step" id="step-email">
+      <!-- form de email -->
+      <div class="container">
+        <div class="header">
+          <div class="line">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M8.00016 12.6666L3.3335 7.99992L8.00016 3.33325" stroke="white" stroke-width="1.33333"
+                stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M12.6668 8H3.3335" stroke="white" stroke-width="1.33333" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+            <p>Voltar</p>
+          </div>
+          <h1>Alterar Senha</h1>
+          <p>Enviaremos um código de verificação para seu email</p>
+        </div>
+        <form method="POST" class="alterar-form">
+          <label class="form-label" for="email">Email</label>
+          <input type="email" class="form-input" name="email" placeholder="seu@email.com" required>
+          {% if erro_email %}
+          <div class="error-message">
+            {{ erro_email }}
+          </div>
+          {% endif %}
+          <button class="alterar-form-btn" type="submit">
+            <div class="btn-content">
+              <span>Enviar</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M4.16675 10H15.8334" stroke="#8A38F5" stroke-width="1.66667" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <path d="M10 4.16675L15.8333 10.0001L10 15.8334" stroke="#8A38F5" stroke-width="1.66667"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+          </button>
+        </form>
+        <div class="info">
+          <h2>Por que preciso verificar meu email?</h2>
+          <p>Para garantir a segurança da sua conta, enviamos um código de verificação antes de permitir a alteração da senha.</p>
+        </div>
       </div>
-
-      <a href="verificar-codigo.html" class="btn-alterar">
-        Enviar Código →
-      </a>
-
-      <div class="alterar-info">
-        <p><strong>Não consegue verificar o email?</strong></p>
-        <p>
-          Se você não tem mais acesso ao email cadastrado, entre em contato com nosso suporte para recuperar o acesso à sua conta.
-        </p>
-      </div>
-
     </section>
-
-  </main>
+    <section class="step" id="step-codigo" hidden>
+      <!-- form codigo -->
+    </section>
+    <section class="step" id="step-senha-nova" hidden>
+      <!-- form senha nova -->>
+    </section>
+    <section class="step" id="sucesso" hidden>
+      <!-- sucesso -->>
+    </section>
+  </div>
 
   <script src="../static/js/components/icons.js"></script>
   <script src="../static/js/components/header.js"></script>
@@ -59,4 +76,5 @@
   <script src="../static/js/pages/alterar-senha.js"></script>
 
 </body>
+
 </html>
