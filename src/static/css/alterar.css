@@ -1,307 +1,193 @@
-/* =============================================
-   alterar.css
-   Usado em: alterar-email.html, alterar-senha.html, verificar-codigo.html
-   ============================================= */
+@font-face {
+  font-family: 'Sora';
+  src: url('../assets/fonts/Sora/Sora-VariableFont_wght.ttf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url('../assets/fonts/Space_Grotesk/SpaceGrotesk-VariableFont_wght.ttf') format('opentype');
+}
+
+
+:root {
+  --roxo: #8A38F5;
+  --amarelo: #FFB830;
+  --vermelho: #E11D35;
+  --escuro: #1c1c2e;
+  --claro: #f0f0f5;
+  --font-title: 'Sora', sans-serif;
+  --font-text: 'Space Grotesk', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-title);
+}
+
 
 body {
-  background-image: url("../assets/images/fundo-configuracoes.png");
+  background-image: url("../assets/images/alterar-fundo.png");
   background-size: cover;
-  background-position: top center;
+  background-position: center;
   background-repeat: no-repeat;
-  background-color: #1a0e2e;
-  min-height: 100vh;
 }
 
-.alterar-page {
-  padding-top: 80px;
-  padding-bottom: 100px;
-}
-
-/* =============================================
-   HERO / TÍTULO
-   ============================================= */
-.alterar-hero {
-  max-width: 480px;
-  margin: 0 auto;
-  padding: 52px 40px 28px;
-}
-
-/* Versão centralizada (verificar código) */
-.alterar-hero--centro {
-  text-align: center;
+.header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 29px;
+  align-self: stretch;
 }
 
-.alterar-hero h1 {
+p {
+  color: #FFF;
+  font-family: var(--font-text);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  /* 150% */
+}
+
+h1 {
+  color: #FFF;
   font-family: var(--font-title);
-  font-size: 38px;
-  font-weight: 800;
-  color: var(--claro);
-  margin-top: 8px;
-}
-
-.alterar-hero p {
-  margin-top: 6px;
-  font-family: var(--font-text);
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.55);
-}
-
-/* Ícone grande centralizado (verificar código) */
-.verificar-icone {
-  width: 60px;
-  height: 60px;
-  border-radius: 18px;
-  background: linear-gradient(135deg, var(--vermelho), var(--roxo));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 6px 24px rgba(138, 56, 245, 0.40);
-  margin-bottom: 4px;
-}
-
-/* Link voltar centralizado */
-.priv-voltar--centro {
-  align-self: center;
-}
-
-/* =============================================
-   FORMULÁRIO
-   ============================================= */
-.alterar-form {
-  max-width: 480px;
-  margin: 0 auto;
-  padding: 0 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-/* Versão centralizada (verificar código) */
-.alterar-form--centro {
-  align-items: center;
-}
-
-/* Label + Input */
-.campo-grupo {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.campo-grupo label {
-  font-family: var(--font-text);
-  font-size: 13px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.65);
-}
-
-.campo-grupo input {
-  width: 100%;
-  padding: 13px 16px;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  background: rgba(255, 255, 255, 0.07);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  color: var(--claro);
-  font-family: var(--font-text);
-  font-size: 14px;
-  outline: none;
-  transition: border-color 0.2s, background 0.2s;
-}
-
-.campo-grupo input::placeholder {
-  color: rgba(255, 255, 255, 0.30);
-}
-
-.campo-grupo input:focus {
-  border-color: rgba(138, 56, 245, 0.55);
-  background: rgba(255, 255, 255, 0.10);
-}
-
-/* =============================================
-   BOTÃO PRINCIPAL
-   ============================================= */
-.btn-alterar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding: 14px;
-  border-radius: 12px;
-  border: none;
-  background: linear-gradient(90deg, var(--vermelho), var(--roxo));
-  color: #fff;
-  font-family: var(--font-title);
-  font-size: 15px;
+  font-size: 60px;
+  font-style: normal;
   font-weight: 700;
-  cursor: pointer;
-  text-decoration: none;
-  transition: opacity 0.2s, transform 0.15s;
-  margin-top: 4px;
+  line-height: 60px;
+  /* 100% */
 }
 
-.btn-alterar:hover {
-  opacity: 0.88;
-  transform: translateY(-2px);
+h2{
+  color: #FFF;
+font-family: Sora;
+font-size: 18px;
+font-style: normal;
+font-weight: 700;
+line-height: 27px; /* 150% */
 }
 
-/* Variação roxa (verificar código) */
-.btn-alterar--roxo {
-  background: linear-gradient(90deg, var(--roxo), #5b1fe0);
-  width: 100%;
-  max-width: 400px;
-}
-
-/* =============================================
-   AVISO (caixa amarela/laranja — alterar email)
-   ============================================= */
-.alterar-aviso {
-  padding: 16px 18px;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 184, 48, 0.25);
-  background: rgba(255, 184, 48, 0.08);
+.line {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-top: 4px;
-}
-
-.aviso-header {
-  display: flex;
+  justify-content: center;
   align-items: center;
   gap: 8px;
-  color: var(--amarelo);
-  font-family: var(--font-title);
-  font-size: 14px;
-  font-weight: 600;
 }
 
-.alterar-aviso p {
-  font-family: var(--font-text);
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.60);
-  line-height: 1.6;
+.step[hidden] {
+  display: none;
 }
 
-/* =============================================
-   INFO (caixa azul/escura — alterar senha)
-   ============================================= */
-.alterar-info {
-  padding: 16px 18px;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.05);
+.step {
   display: flex;
+  width: 1921px;
+  height: 911px;
   flex-direction: column;
-  gap: 6px;
-}
-
-.alterar-info p {
-  font-family: var(--font-text);
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.55);
-  line-height: 1.6;
-}
-
-.alterar-info strong {
-  color: var(--claro);
-  font-weight: 600;
-}
-
-/* =============================================
-   INPUTS DO CÓDIGO (6 caixinhas — verificar código)
-   ============================================= */
-.codigo-inputs {
-  display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 10px;
+  flex-shrink: 0;
+}
+
+.container {
+  display: flex;
+  width: 543px;
+  flex-direction: column;
   justify-content: center;
-  margin: 8px 0;
+  align-items: center;
+  gap: 42px;
 }
 
-.codigo-digito {
-  width: 52px;
+.alterar-form {
+  display: flex;
+  width: 607px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  flex-shrink: 0;
+}
+
+.form-label {
+  color: var(--claro);
+  font-family: "Space Grotesk";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.form-input {
+  color: var(--claro);
+  font-size: 16px;
+  width: 607px;
   height: 58px;
-  border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.07);
-  color: var(--claro);
-  font-family: var(--font-title);
-  font-size: 24px;
-  font-weight: 700;
-  text-align: center;
-  outline: none;
-  transition: border-color 0.2s, background 0.2s;
-  -moz-appearance: textfield;
+  padding: 16px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #f0f0f5ad;
+  background: rgba(255, 255, 255, 0.20);
+  backdrop-filter: blur(50px);
 }
 
-.codigo-digito:focus {
-  border-color: var(--roxo);
-  background: rgba(138, 56, 245, 0.12);
+.form-input::placeholder {
+  color: #f0f0f594;
 }
 
-/* Remove setas dos inputs numéricos */
-.codigo-digito::-webkit-outer-spin-button,
-.codigo-digito::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-}
-
-/* =============================================
-   BOTÕES EXTRAS (verificar código)
-   ============================================= */
-.btn-reenviar {
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: rgba(255, 255, 255, 0.65);
-  font-family: var(--font-text);
-  font-size: 14px;
-  padding: 12px;
-  border-radius: 12px;
+.alterar-form-btn {
+  display: flex;
+  width: 606px;
+  height: 56px;
+  padding: 15px 0 17px 0;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 16px;
+  background: var(--claro);
+  font-size: 16px;
+  border: none;
+  transition: background-color 0.3s ease;
   cursor: pointer;
-  width: 100%;
-  max-width: 400px;
-  transition: background 0.2s, color 0.2s;
 }
 
-.btn-reenviar:hover {
-  background: rgba(255, 255, 255, 0.07);
+.alterar-form-btn:hover {
+  background: linear-gradient(90deg, var(--vermelho), var(--roxo));
+  transition: background-color 0.3s ease;
+}
+
+.alterar-form-btn:hover span {
   color: var(--claro);
+  transition: color 0.3s ease;
 }
 
-.link-voltar-config {
-  font-family: var(--font-text);
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.45);
-  text-decoration: none;
-  margin-top: 4px;
-  transition: color 0.2s;
+.alterar-form-btn:hover .btn-content svg path {
+  stroke: var(--claro);
+  transition: stroke 0.3s ease;
 }
 
-.link-voltar-config:hover {
-  color: var(--claro);
+.btn-content span {
+  transition: color 0.3s ease;
+  background: linear-gradient(90deg, var(--vermelho), var(--roxo));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-/* =============================================
-   RESPONSIVO
-   ============================================= */
-@media (max-width: 768px) {
-  .alterar-hero,
-  .alterar-form {
-    padding-left: 24px;
-    padding-right: 24px;
-  }
-
-  .alterar-hero h1 {
-    font-size: 28px;
-  }
-
-  .codigo-digito {
-    width: 42px;
-    height: 48px;
-    font-size: 20px;
-  }
+.info {
+  display: flex;
+  height: 145px;
+  width: 607px;
+  padding: 25px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  flex-shrink: 0;
+  align-self: stretch;
+  border-radius: 16px;
+  border: 1px solid #FFF;
+  background: rgba(229, 231, 235, 0.20);
 }
