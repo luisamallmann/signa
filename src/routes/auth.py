@@ -1,5 +1,5 @@
 from flask import Blueprint
-from controllers.auth_controllers import login, cadastro
+from controllers.auth_controllers import login, cadastro, alt_email, alt_senha
 
 auth = Blueprint('auth', __name__)
 
