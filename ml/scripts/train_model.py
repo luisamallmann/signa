@@ -4,10 +4,11 @@ from sklearn.model_selection import train_test_split
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import LSTM, Dense, Dropout
 from tensorflow.keras.utils import to_categorical
+from tensorflow.keras.callbacks import ModelCheckpoint, EarlyStopping
 
 LANDMARKS_DIR = "../data/landmarks"
-SEQUENCE_LEN = 30 # padroniza os vídeos para apenas 30 frames
-FEATURE_SIZE = 126 # 2 mão x 21 pontos x 3 coordenadas
+SEQUENCE_LEN = 30
+FEATURE_SIZE = 126
 
 X, y = [], []
 label_map = {}
@@ -22,7 +23,6 @@ for arquivo in sorted(os.listdir(LANDMARKS_DIR)):
 
     seq = np.load(os.path.join(LANDMARKS_DIR, arquivo))
 
-    # padroniza para SEQUENCE_LEN frames (corta ou preenche com 0)
     if len(seq) >= SEQUENCE_LEN:
         seq = seq[:SEQUENCE_LEN]
     else:
@@ -33,30 +33,61 @@ for arquivo in sorted(os.listdir(LANDMARKS_DIR)):
     y.append(label_map[sinal])
 
 X = np.array(X)
-y = to_categorical(y, num_classes = len(label_map))
+y = to_categorical(y, num_classes=len(label_map))
 
-print(F"Total de amostras: {len(X)}")
+print(f"Total de amostras: {len(X)}")
 print(f"Sinais: {label_map}")
 
-# com poucos dados, não da pra separar teste de forma significativa
-# então treinamos com tudo só para validar que o pipeline funciona
+# separa 80% treino e 20% teste
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42, stratify=y
+)
+
+print(f"Treino: {len(X_train)} amostras")
+print(f"Teste: {len(X_test)} amostras")
+
 model = Sequential([
-    LSTM(64, return_sequences = True, input_shape = (SEQUENCE_LEN, FEATURE_SIZE)),
+    LSTM(64, return_sequences=True, input_shape=(SEQUENCE_LEN, FEATURE_SIZE)),
     Dropout(0.2),
-    LSTM(128, return_sequences = False),
+    LSTM(128, return_sequences=False),
     Dropout(0.2),
-    Dense(64, activation = 'relu'),
-    Dense(len(label_map), activation = 'softmax')
+    Dense(64, activation='relu'),
+    Dense(len(label_map), activation='softmax')
 ])
 
 model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 model.summary()
 
-model.fit(X, y, epochs = 30, batch_size = 4)
+os.makedirs("../models", exist_ok=True)
 
-os.makedirs("../models", exist_ok = True)
-model.save("../models/signa_model.keras")
+# salva automaticamente o melhor modelo
+checkpoint = ModelCheckpoint(
+    "../models/signa_model.keras",
+    monitor='val_accuracy',
+    save_best_only=True,
+    verbose=1
+)
+
+# para o treino se não melhorar por 15 epochs seguidas
+early_stopping = EarlyStopping(
+    monitor='val_accuracy',
+    patience=15,
+    restore_best_weights=True,
+    verbose=1
+)
+
+model.fit(
+    X_train, y_train,
+    epochs=100,
+    batch_size=8,
+    validation_data=(X_test, y_test),
+    callbacks=[checkpoint, early_stopping]
+)
+
+# avalia no conjunto de teste
+loss, accuracy = model.evaluate(X_test, y_test, verbose=0)
+print(f"\nAcurácia real no teste: {accuracy*100:.1f}%")
+
 np.save("../models/label_map.npy", label_map)
-
-print("n\Modelo treinado e salvo.")
-print("Labels: ", label_map)
+print("\nModelo treinado e salvo!")
+print("Labels:", label_map)
