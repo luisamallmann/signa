@@ -1,9 +1,11 @@
 from flask import Flask, render_template
 from routes.auth import auth
+from routes.translator import translator
 
 app = Flask(__name__)
 
 app.register_blueprint(auth, url_prefix='/auth')
+app.register_blueprint(translator, url_prefix='/api')
 
 @app.route('/', methods=['GET'])
 def home():
@@ -26,4 +28,4 @@ def contato():
     return render_template('contato.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, use_reloader=False) #evitar carregar 2x o modelo
