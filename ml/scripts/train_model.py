@@ -10,6 +10,10 @@ LANDMARKS_DIR = "../data/landmarks"
 SEQUENCE_LEN = 30
 FEATURE_SIZE = 126
 
+def reamostrar(seq, n=SEQUENCE_LEN):
+    idx = np.linspace(0, len(seq) - 1, n).round().astype(int)
+    return seq[idx]
+
 X, y = [], []
 label_map = {}
 
@@ -23,11 +27,9 @@ for arquivo in sorted(os.listdir(LANDMARKS_DIR)):
 
     seq = np.load(os.path.join(LANDMARKS_DIR, arquivo))
 
-    if len(seq) >= SEQUENCE_LEN:
-        seq = seq[:SEQUENCE_LEN]
-    else:
-        pad = np.zeros((SEQUENCE_LEN - len(seq), FEATURE_SIZE))
-        seq = np.vstack([seq, pad])
+    if len(seq) == 0:
+        continue
+    seq = reamostrar(seq)    
 
     X.append(seq)
     y.append(label_map[sinal])
@@ -40,7 +42,7 @@ print(f"Sinais: {label_map}")
 
 # separa 80% treino e 20% teste
 X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.2, random_state=42, stratify=y
+    X, y, test_size=14, random_state=42, stratify=y
 )
 
 print(f"Treino: {len(X_train)} amostras")
