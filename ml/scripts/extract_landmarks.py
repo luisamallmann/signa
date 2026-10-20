@@ -2,18 +2,21 @@ import cv2 # le e processa os videos
 import mediapipe as mp # detecta os landmarks
 import numpy as np # arrays numericos
 import os # navega por pastas e arquivos
+from pathlib import Path
 
 from mediapipe.tasks import python
 from mediapipe.tasks.python import vision
 
-# define diretorios
-RAW_DIR = "../data/raw" # local dos vídeos
-OUT_DIR = "../data/landmarks" # local das saídas
+# define diretorios a partir da pasta do script (funciona de qualquer diretório)
+SCRIPT_DIR = Path(__file__).resolve().parent # ...\signa\ml\scripts
+RAW_DIR = SCRIPT_DIR.parent / "data" / "raw" # local dos vídeos
+OUT_DIR = SCRIPT_DIR.parent / "data" / "landmarks" # local das saídas
+TASK_PATH = SCRIPT_DIR / "hand_landmarker.task" # modelo do mediapipe
 os.makedirs(OUT_DIR, exist_ok=True)
 
 # detector api
 
-base_options = python.BaseOptions(model_asset_path='hand_landmarker.task') # carrega o modelo
+base_options = python.BaseOptions(model_asset_path=str(TASK_PATH)) # carrega o modelo
 
 options = vision.HandLandmarkerOptions( # configura para detectar 2 mãos pot frame
     base_options = base_options,
