@@ -62,7 +62,7 @@ def cadastro():
     cursor.close()
     conn.close()
 
-    return redirect(url_for('home.html'))
+    return url_for('home.html')
 
 def alt_senha():
     if request.method == 'GET':
