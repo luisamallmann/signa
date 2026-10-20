@@ -4,10 +4,11 @@ import { HandLandmarker, FilesetResolver } from
 // ---------- configurações (iguais ao treino/teste) ----------
 const SEQUENCE_LEN = 30;
 const FEATURE_SIZE = 126;
-const ESPELHAR = false;       // use o valor que funcionou no test_model.py com a webcam
-const LIMIAR = 0.8;
-const PREDIZER_A_CADA = 3;    // frames entre previsões
-const CONFIRMACOES = 2;       // previsões iguais seguidas para aceitar a palavra
+const ESPELHAR = false;        // use o valor que funcionou no test_model.py com a webcam
+const LIMIAR = 0.6;            // mais baixo para testar; suba se aparecer palavra errada
+const MIN_FRAMES_SINAL = 10;   // menos que isso = ruído (mão passou rápido pela câmera)
+const MAX_FRAMES_SINAL = 300;  // corta sinais longos demais (o maior vídeo de treino tem ~310)
+const FIM_SEM_MAO_MS = 800;    // mão fora do quadro por esse tempo = fim do sinal (800 evita cortar o sinal se a detecção falhar um instante)
 const WASM = "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14/wasm";
 
 // ---------- elementos da página ----------
@@ -23,9 +24,8 @@ const elTexto = document.getElementById("traducao-texto");
 const rotuloBotao = btnIniciar.querySelector("span");
 
 // ---------- estado ----------
-let landmarker = null, stream = null, rodando = false, ocupado = false;
-let buffer = [], contador = 0;
-let ultimoLabel = null, repeticoes = 0, ultimaPalavra = null;
+let landmarker = null, stream = null, rodando = false;
+let segmento = [], gravando = false, semMaoDesde = null;
 const palavras = [];
 
 // Mesma lógica do extrair() do Python: [esquerda(63), direita(63)]
@@ -42,6 +42,15 @@ function extrair(resultado) {
   return f;
 }
 
+// Mesma lógica do reamostrar() do train_model.py
+function reamostrar(seq, n) {
+  const out = [];
+  for (let i = 0; i < n; i++) {
+    out.push(seq[Math.round(i * (seq.length - 1) / (n - 1))]);
+  }
+  return out;
+}
+
 function mostrarTexto() {
   const tem = palavras.length > 0;
   elVazio.hidden = tem;
@@ -49,35 +58,41 @@ function mostrarTexto() {
   elTexto.textContent = palavras.join(" ");
 }
 
-async function predizer() {
-  if (ocupado) return;           // não acumula requisições
-  ocupado = true;
+function resetarSegmento() {
+  segmento = []; gravando = false; semMaoDesde = null;
+}
+
+// Chamado quando o sinal termina: manda o trecho inteiro para o modelo
+function finalizarSinal() {
+  const seq = segmento;
+  resetarSegmento();
+  if (seq.length < MIN_FRAMES_SINAL) {
+    elStatus.textContent = "Faça um sinal.";
+    return;
+  }
+  predizer(seq);
+}
+
+async function predizer(seq) {
+  elStatus.textContent = "Reconhecendo...";
   try {
     const r = await fetch("/api/predict", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ frames: buffer.map(f => f.map(v => +v.toFixed(5))) }),
+      body: JSON.stringify({ frames: reamostrar(seq, SEQUENCE_LEN).map(f => f.map(v => +v.toFixed(5))) }),
     });
     const { label, confidence } = await r.json();
+    console.log(`sinal com ${seq.length} frames ->`, label, confidence?.toFixed(2)); // debug
 
     if (label && confidence >= LIMIAR) {
       elStatus.textContent = `${label} (${(confidence * 100).toFixed(0)}%)`;
-      repeticoes = label === ultimoLabel ? repeticoes + 1 : 1;
-      ultimoLabel = label;
-      if (repeticoes >= CONFIRMACOES && label !== ultimaPalavra) {
-        palavras.push(label);
-        ultimaPalavra = label;
-        mostrarTexto();
-      }
+      palavras.push(label);
+      mostrarTexto();
     } else {
-      elStatus.textContent = "...";
-      ultimoLabel = null; repeticoes = 0;
-      ultimaPalavra = null;      // permite repetir a palavra depois de uma pausa
+      elStatus.textContent = "Sinal não reconhecido, tente de novo.";
     }
   } catch (e) {
     elStatus.textContent = "Erro ao falar com o servidor.";
-  } finally {
-    ocupado = false;
   }
 }
 
@@ -92,12 +107,23 @@ function loop() {
     ctx.restore();
 
     const resultado = landmarker.detect(canvas);
-    buffer.push(extrair(resultado));
-    if (buffer.length > SEQUENCE_LEN) buffer.shift();
+    const temMao = resultado.landmarks.length > 0;
+    const agora = performance.now();
 
-    if (buffer.length === SEQUENCE_LEN && ++contador % PREDIZER_A_CADA === 0) {
-      predizer();
+    if (temMao) {
+      if (!gravando) {               // mão apareceu: começa um sinal novo
+        gravando = true;
+        segmento = [];
+        elStatus.textContent = "Gravando sinal...";
+      }
+      segmento.push(extrair(resultado));
+      semMaoDesde = null;
+    } else if (gravando) {           // mão sumiu: espera um pouco antes de encerrar
+      semMaoDesde ??= agora;
+      if (agora - semMaoDesde >= FIM_SEM_MAO_MS) finalizarSinal();
     }
+
+    if (gravando && segmento.length >= MAX_FRAMES_SINAL) finalizarSinal();
   }
   requestAnimationFrame(loop);
 }
@@ -115,8 +141,8 @@ async function iniciar() {
       });
     }
     stream = await navigator.mediaDevices.getUserMedia({
-  video: { width: { ideal: 1280 }, height: { ideal: 720 } }, audio: false,
-});
+      video: { width: { ideal: 1280 }, height: { ideal: 720 } }, audio: false,
+    });
     video.srcObject = stream;
     await video.play();
   } catch (e) {
@@ -126,7 +152,7 @@ async function iniciar() {
     return;
   }
 
-  buffer = []; contador = 0; ultimoLabel = null; repeticoes = 0;
+  resetarSegmento();
   placeholderCamera.hidden = true;
   canvas.hidden = false;
   rotuloBotao.textContent = "Parar Tradução";
@@ -138,6 +164,7 @@ async function iniciar() {
 
 function parar() {
   rodando = false;
+  resetarSegmento();
   stream?.getTracks().forEach(t => t.stop());
   stream = null;
   canvas.hidden = true;
@@ -150,7 +177,6 @@ btnIniciar.addEventListener("click", () => (rodando ? parar() : iniciar()));
 
 btnReiniciar.addEventListener("click", () => {
   palavras.length = 0;
-  ultimaPalavra = null; ultimoLabel = null; repeticoes = 0;
-  buffer = [];
+  resetarSegmento();
   mostrarTexto();
 });
