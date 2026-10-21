@@ -28,7 +28,8 @@
 
 
 body {
-  background-image: url("../assets/images/alterar-fundo.png");
+  background-color: var(--escuro);
+  background-image: url("../assets/images/fundo-altera.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -86,7 +87,8 @@ h2 {
 
 .step {
   display: flex;
-  height: 911px;
+  min-height: 911px;
+  padding: 40px 0;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -98,6 +100,7 @@ h2 {
   margin-top: 50px;
   display: flex;
   width: 500px;
+  max-width: calc(100% - 32px);
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -257,4 +260,122 @@ h2 {
   font-weight: 400;
   line-height: 20px;
   /* 142.857% */
+}
+
+
+/* ===== ajustes dos fluxos de alterar senha / email ===== */
+
+a.line.voltar {
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+
+a.line.voltar:hover {
+  opacity: 1;
+}
+
+.header p b {
+  color: var(--claro);
+}
+
+.icone-card {
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* campo com ícone à esquerda (Figma) */
+.input-icone {
+  position: relative;
+  width: 100%;
+}
+
+.input-icone__svg {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #f0f0f5aa;
+  pointer-events: none;
+}
+
+.input-icone .form-input {
+  padding-left: 44px;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--roxo);
+}
+
+.error-message,
+.sucesso-message {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-family: var(--font-text);
+  font-size: 14px;
+}
+
+.error-message {
+  color: #ff8a98;
+  background: rgba(225, 29, 53, 0.15);
+  border: 1px solid rgba(225, 29, 53, 0.45);
+}
+
+.sucesso-message {
+  color: #8ef0b4;
+  background: rgba(74, 222, 128, 0.12);
+  border: 1px solid rgba(74, 222, 128, 0.35);
+}
+
+.info {
+  height: auto;
+}
+
+.slots {
+  padding: 0;
+  gap: 12px;
+}
+
+.altera-footer {
+  padding: 0;
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  color: var(--claro);
+  font-family: var(--font-text);
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.link-btn:hover {
+  color: var(--amarelo);
+}
+
+@media (max-width: 560px) {
+  h1 {
+    font-size: 34px;
+    line-height: 42px;
+  }
+
+  .slot {
+    width: 44px;
+    height: 54px;
+    padding: 8px;
+    font-size: 24px;
+  }
+
+  .slots {
+    gap: 8px;
+  }
 }

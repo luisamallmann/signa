@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Editar Perfil — SIGNA</title>
+
+  <link rel="stylesheet" href="/static/css/global.css" />
+  <link rel="stylesheet" href="/static/css/header.css" />
+  <link rel="stylesheet" href="/static/css/footer.css" />
+  <link rel="stylesheet" href="/static/css/configuracoes.css" />
+  <link rel="stylesheet" href="/static/css/perfil.css" />
+</head>
+
+<body>
+
+  <div id="app"></div>
+
+  <main class="config-page">
+
+    <section class="perfil-hero">
+      <div class="perfil-avatar">{{ nome[0]|upper }}</div>
+      <h1>Editar Perfil</h1>
+      <p>Altere suas informações pessoais</p>
+    </section>
+
+    <form method="POST" class="perfil-form">
+
+      {% if erro %}
+      <div class="perfil-msg perfil-msg--erro">{{ erro }}</div>
+      {% endif %}
+      {% if sucesso %}
+      <div class="perfil-msg perfil-msg--sucesso">{{ sucesso }}</div>
+      {% endif %}
+
+      <div class="campo-grupo">
+        <label class="form-label" for="nome">Nome</label>
+        <input class="form-input" type="text" id="nome" name="nome" value="{{ nome }}" data-original="{{ nome }}" required />
+      </div>
+
+      <div class="campo-grupo">
+        <label class="form-label" for="email">Email</label>
+        <input class="form-input" type="email" id="email" value="{{ email }}" disabled />
+        <a href="/auth/alterar-email?reiniciar=1" class="perfil-link">Alterar email</a>
+      </div>
+
+      <button type="submit" class="btn-salvar" id="btn-salvar" disabled>Salvar alterações</button>
+
+      <a href="/perfil/" class="perfil-link">← Voltar para o perfil</a>
+
+    </form>
+
+  </main>
+
+  <script src="/static/js/components/icons.js"></script>
+  <script src="/static/js/components/header.js"></script>
+  <script src="/static/js/components/footer.js"></script>
+  <script src="/static/js/pages/perfil.js"></script>
+
+</body>
+</html>

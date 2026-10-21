@@ -71,6 +71,9 @@
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  width: calc(100% - 48px);
+  max-width: 560px;
+  margin: 0 auto;
 }
 
 .campo-grupo {
@@ -141,6 +144,12 @@
 .btn-salvar:hover {
   opacity: 0.88;
   transform: translateY(-1px);
+}
+
+.btn-salvar:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  transform: none;
 }
 
 /* ── Mensagens de erro / sucesso ── */

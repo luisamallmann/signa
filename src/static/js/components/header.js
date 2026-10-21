@@ -25,14 +25,14 @@ function Header(pageAtiva = 'Home') {
         <div class="nav-icons-mobile">
           <button class="icon-btn" aria-label="Notificações">${IconBell()}</button>
           <a href="/configuracoes" class="icon-btn" aria-label="Configurações">${IconSettings()}</a>
-          <a href="/auth/login" class="icon-btn" aria-label="Perfil">${IconUser()}</a>
+          <a href="/perfil/" class="icon-btn" aria-label="Perfil">${IconUser()}</a>
         </div>
       </nav>
 
       <div class="header-icons">
         <button class="icon-btn" aria-label="Notificações">${IconBell()}</button>
         <a href="/configuracoes" class="icon-btn" aria-label="Configurações">${IconSettings()}</a>
-        <a href="/auth/login" class="icon-btn" aria-label="Perfil">${IconUser()}</a>
+        <a href="/perfil/" class="icon-btn" aria-label="Perfil">${IconUser()}</a>
       </div>
 
       <button class="menu-toggle" id="menu-toggle" aria-label="Menu">

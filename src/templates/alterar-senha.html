@@ -6,10 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Alterar Senha — SIGNA</title>
 
-  <link rel="stylesheet" href="../static/css/global.css" />
-  <link rel="stylesheet" href="../static/css/header.css" />
-  <link rel="stylesheet" href="../static/css/footer.css" />
-  <link rel="stylesheet" href="../static/css/alterar.css" />
+  <link rel="stylesheet" href="/static/css/global.css" />
+  <link rel="stylesheet" href="/static/css/header.css" />
+  <link rel="stylesheet" href="/static/css/footer.css" />
+  <link rel="stylesheet" href="/static/css/alterar.css" />
 </head>
 
 <body>
@@ -17,172 +17,100 @@
   <div id="app"></div>
 
   <div id="recuperar-senha">
-    <section class="step" id="step-email">
-      <!-- form de email -->
+
+    <!-- etapa 1: email -->
+    <section class="step" id="step-email" {% if etapa != 'email' %}hidden{% endif %}>
       <div class="container">
         <div class="header">
-          <div class="line">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M8.00016 12.6666L3.3335 7.99992L8.00016 3.33325" stroke="white" stroke-width="1.33333"
-                stroke-linecap="round" stroke-linejoin="round" />
-              <path d="M12.6668 8H3.3335" stroke="white" stroke-width="1.33333" stroke-linecap="round"
-                stroke-linejoin="round" />
-            </svg>
-            <p>Voltar</p>
-          </div>
+          {% if logado %}<a class="line voltar" href="/configuracoes"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8.00016 12.6666L3.3335 7.99992L8.00016 3.33325" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" /><path d="M12.6668 8H3.3335" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" /></svg><p>Voltar para configurações</p></a>{% else %}<a class="line voltar" href="/auth/login"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8.00016 12.6666L3.3335 7.99992L8.00016 3.33325" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" /><path d="M12.6668 8H3.3335" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" /></svg><p>Voltar para o login</p></a>{% endif %}
           <h1>Alterar Senha</h1>
           <p>Enviaremos um código de verificação para seu email</p>
         </div>
         <form method="POST" class="alterar-form">
+          <input type="hidden" name="etapa" value="email">
           <label class="form-label" for="email">Email</label>
-          <input type="email" class="form-input" name="email" placeholder="seu@email.com" required>
-          {% if erro_email %}
-          <div class="error-message">
-            {{ erro_email }}
-          </div>
-          {% endif %}
-          <button class="alterar-form-btn" type="submit">
-            <div class="btn-content">
-              <span>Enviar Código</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <path d="M4.16675 10H15.8334" stroke="#8A38F5" stroke-width="1.66667" stroke-linecap="round"
-                  stroke-linejoin="round" />
-                <path d="M10 4.16675L15.8333 10.0001L10 15.8334" stroke="#8A38F5" stroke-width="1.66667"
-                  stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            </div>
-          </button>
+          <div class="input-icone"><svg class="input-icone__svg" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><input type="email" class="form-input" id="email" name="email" placeholder="seu@email.com" value="{{ email }}" required ></div>
+          {% if erro_email %}<div class="error-message">{{ erro_email }}</div>{% endif %}
+          <button class="alterar-form-btn" type="submit"><div class="btn-content"><span>Enviar Código</span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4.16675 10H15.8334" stroke="#8A38F5" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" /><path d="M10 4.16675L15.8333 10.0001L10 15.8334" stroke="#8A38F5" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" /></svg></div></button>
         </form>
         <div class="info">
           <h2>Por que preciso verificar meu email?</h2>
-          <p>Para garantir a segurança da sua conta, enviamos um código de verificação antes de permitir a alteração da
-            senha.</p>
+          <p>Para garantir a segurança da sua conta, enviamos um código de verificação antes de permitir a alteração da senha.</p>
         </div>
       </div>
     </section>
-    <section class="step" id="step-codigo" hidden>
+
+    <!-- etapa 2: código -->
+    <section class="step" id="step-codigo" {% if etapa != 'codigo' %}hidden{% endif %}>
       <div class="container">
         <div class="header">
-          <div class="line">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M8.00016 12.6666L3.3335 7.99992L8.00016 3.33325" stroke="white" stroke-width="1.33333"
-                stroke-linecap="round" stroke-linejoin="round" />
-              <path d="M12.6668 8H3.3335" stroke="white" stroke-width="1.33333" stroke-linecap="round"
-                stroke-linejoin="round" />
-            </svg>
-            <p>Voltar</p>
-          </div>
-          <div class="icone-card">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
-              <path
-                d="M26.6668 17.3333C26.6668 23.9999 22.0002 27.3333 16.4535 29.2666C16.163 29.365 15.8475 29.3603 15.5602 29.2533C10.0002 27.3333 5.3335 23.9999 5.3335 17.3333V7.99995C5.3335 7.64633 5.47397 7.30719 5.72402 7.05714C5.97407 6.80709 6.31321 6.66662 6.66683 6.66662C9.3335 6.66662 12.6668 5.06662 14.9868 3.03995C15.2693 2.79861 15.6286 2.66602 16.0002 2.66602C16.3717 2.66602 16.731 2.79861 17.0135 3.03995C19.3468 5.07995 22.6668 6.66662 25.3335 6.66662C25.6871 6.66662 26.0263 6.80709 26.2763 7.05714C26.5264 7.30719 26.6668 7.64633 26.6668 7.99995V17.3333Z"
-                stroke="white" stroke-width="2.66667" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </div>
+          <a class="line voltar" href="/auth/alterar-senha?reiniciar=1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8.00016 12.6666L3.3335 7.99992L8.00016 3.33325" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" /><path d="M12.6668 8H3.3335" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" /></svg><p>Voltar</p></a>
+          <div class="icone-card"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M26.6668 17.3333C26.6668 23.9999 22.0002 27.3333 16.4535 29.2666C16.163 29.365 15.8475 29.3603 15.5602 29.2533C10.0002 27.3333 5.3335 23.9999 5.3335 17.3333V7.99995C5.3335 7.64633 5.47397 7.30719 5.72402 7.05714C5.97407 6.80709 6.31321 6.66662 6.66683 6.66662C9.3335 6.66662 12.6668 5.06662 14.9868 3.03995C15.2693 2.79861 15.6286 2.66602 16.0002 2.66602C16.3717 2.66602 16.731 2.79861 17.0135 3.03995C19.3468 5.07995 22.6668 6.66662 25.3335 6.66662C25.6871 6.66662 26.0263 6.80709 26.2763 7.05714C26.5264 7.30719 26.6668 7.64633 26.6668 7.99995V17.3333Z" stroke="white" stroke-width="2.66667" stroke-linecap="round" stroke-linejoin="round" /></svg></div>
           <h1>Verificar Código</h1>
-          <p>Digite o código de 6 dígitos enviado para seu email</p>
+          <p>Digite o código de 6 dígitos enviado para <b>{{ email }}</b></p>
         </div>
-        <form method="POST" class="alterar-form">
+        <form method="POST" class="alterar-form" id="form-codigo">
+          <input type="hidden" name="etapa" value="codigo">
           <div class="slots">
-            <input class="slot" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1"
-              autocomplete="one-time-code">
-            <input class="slot" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1"
-              autocomplete="one-time-code">
-            <input class="slot" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1"
-              autocomplete="one-time-code">
-            <input class="slot" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1"
-              autocomplete="one-time-code">
-            <input class="slot" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1"
-              autocomplete="one-time-code">
-            <input class="slot" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1"
-              autocomplete="one-time-code">
+            <input class="slot" name="digito" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1" autocomplete="one-time-code" required><input class="slot" name="digito" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1" autocomplete="one-time-code" required><input class="slot" name="digito" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1" autocomplete="one-time-code" required><input class="slot" name="digito" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1" autocomplete="one-time-code" required><input class="slot" name="digito" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1" autocomplete="one-time-code" required><input class="slot" name="digito" type="text" inputmode="numeric" pattern="[0-9]" maxlength="1" autocomplete="one-time-code" required>
           </div>
-          <button class="alterar-form-btn" type="submit">
-            <div class="btn-content">
-              <span>Verificar Código</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <path d="M4.16675 10H15.8334" stroke="#8A38F5" stroke-width="1.66667" stroke-linecap="round"
-                  stroke-linejoin="round" />
-                <path d="M10 4.16675L15.8333 10.0001L10 15.8334" stroke="#8A38F5" stroke-width="1.66667"
-                  stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            </div>
-          </button>
+          {% if erro_codigo %}<div class="error-message">{{ erro_codigo }}</div>{% endif %}
+          {% if aviso %}<div class="sucesso-message">{{ aviso }}</div>{% endif %}
+          <button class="alterar-form-btn" type="submit"><div class="btn-content"><span>Verificar Código</span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4.16675 10H15.8334" stroke="#8A38F5" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" /><path d="M10 4.16675L15.8333 10.0001L10 15.8334" stroke="#8A38F5" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" /></svg></div></button>
         </form>
-        <div class="altera-footer">
+        <form method="POST" class="altera-footer">
+          <input type="hidden" name="etapa" value="reenviar">
           <p>Não recebeu o código?</p>
-          <p><b>Reenviar código</b></p>
-        </div>
+          <button type="submit" class="link-btn">Reenviar código</button>
+        </form>
         <div class="info-expira">
-          <p>O código expira em <span class="rosa" id="contador">03:00</span></p>
+          <p>O código expira em <span class="rosa" id="contador" data-segundos="{{ expira_em }}">10:00</span></p>
         </div>
       </div>
     </section>
-    <section class="step" id="step-senha-nova" hidden>
+
+    <!-- etapa 3: nova senha -->
+    <section class="step" id="step-senha-nova" {% if etapa != 'senha' %}hidden{% endif %}>
       <div class="container">
         <div class="header">
-          <div class="line">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M8.00016 12.6666L3.3335 7.99992L8.00016 3.33325" stroke="white" stroke-width="1.33333"
-                stroke-linecap="round" stroke-linejoin="round" />
-              <path d="M12.6668 8H3.3335" stroke="white" stroke-width="1.33333" stroke-linecap="round"
-                stroke-linejoin="round" />
-            </svg>
-            <p>Voltar</p>
-          </div>
+          <a class="line voltar" href="/auth/alterar-senha?reiniciar=1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8.00016 12.6666L3.3335 7.99992L8.00016 3.33325" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" /><path d="M12.6668 8H3.3335" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" /></svg><p>Voltar</p></a>
           <h1>Alterar Senha</h1>
           <p>Digite sua nova senha e confirme</p>
         </div>
         <form method="POST" class="alterar-form">
-          <label class="form-label" for="senha">Senha</label>
-          <input type="password" class="form-input" name="senha" placeholder="••••••••" required>
-          <label class="form-label" for="senha">Confirmar Senha</label>
-          <input type="password" class="form-input" name="senha" placeholder="••••••••" required>
-          {% if erro_senha %}
-          <div class="error-message">
-            {{ erro_senha }}
-          </div>
-          {% endif %}
-          <button class="alterar-form-btn" type="submit">
-            <div class="btn-content">
-              <span>Alterar Senha</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <path d="M4.16675 10H15.8334" stroke="#8A38F5" stroke-width="1.66667" stroke-linecap="round"
-                  stroke-linejoin="round" />
-                <path d="M10 4.16675L15.8333 10.0001L10 15.8334" stroke="#8A38F5" stroke-width="1.66667"
-                  stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            </div>
-          </button>
+          <input type="hidden" name="etapa" value="senha">
+          <label class="form-label" for="senha1">Nova Senha</label>
+          <div class="input-icone"><svg class="input-icone__svg" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="3" y="11" width="18" height="11" rx="2" ry="2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><input type="password" class="form-input" id="senha1" name="senha1" placeholder="••••••••" required minlength="6"></div>
+          <label class="form-label" for="senha2">Confirmar Senha</label>
+          <div class="input-icone"><svg class="input-icone__svg" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="3" y="11" width="18" height="11" rx="2" ry="2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><input type="password" class="form-input" id="senha2" name="senha2" placeholder="••••••••" required minlength="6"></div>
+          {% if erro_senha %}<div class="error-message">{{ erro_senha }}</div>{% endif %}
+          <button class="alterar-form-btn" type="submit"><div class="btn-content"><span>Alterar Senha</span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4.16675 10H15.8334" stroke="#8A38F5" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" /><path d="M10 4.16675L15.8333 10.0001L10 15.8334" stroke="#8A38F5" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" /></svg></div></button>
         </form>
       </div>
     </section>
-    <section class="step" id="sucesso" hidden>
+
+    <!-- etapa 4: sucesso -->
+    <section class="step" id="step-sucesso" {% if etapa != 'sucesso' %}hidden{% endif %}>
       <div class="container">
         <div class="header">
-          <div class="icone-card">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
-              <path
-                d="M26.6668 17.3333C26.6668 23.9999 22.0002 27.3333 16.4535 29.2666C16.163 29.365 15.8475 29.3603 15.5602 29.2533C10.0002 27.3333 5.3335 23.9999 5.3335 17.3333V7.99995C5.3335 7.64633 5.47397 7.30719 5.72402 7.05714C5.97407 6.80709 6.31321 6.66662 6.66683 6.66662C9.3335 6.66662 12.6668 5.06662 14.9868 3.03995C15.2693 2.79861 15.6286 2.66602 16.0002 2.66602C16.3717 2.66602 16.731 2.79861 17.0135 3.03995C19.3468 5.07995 22.6668 6.66662 25.3335 6.66662C25.6871 6.66662 26.0263 6.80709 26.2763 7.05714C26.5264 7.30719 26.6668 7.64633 26.6668 7.99995V17.3333Z"
-                stroke="white" stroke-width="2.66667" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </div>
-          <h1>Senha alterada com Sucesso!</h1>
-          <div class="line"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
-              fill="none">
-              <path d="M8.00016 12.6666L3.3335 7.99992L8.00016 3.33325" stroke="white" stroke-width="1.33333"
-                stroke-linecap="round" stroke-linejoin="round" />
-              <path d="M12.6668 8H3.3335" stroke="white" stroke-width="1.33333" stroke-linecap="round"
-                stroke-linejoin="round" />
-            </svg><a class="link">Voltar a traduzir</a></div>
-
+          <div class="icone-card"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h1>Senha alterada com sucesso!</h1>
+          {% if logado %}
+          <p>Na próxima vez que entrar, use a nova senha.</p>
+          <a class="line voltar" href="/tradutor"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8.00016 12.6666L3.3335 7.99992L8.00016 3.33325" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" /><path d="M12.6668 8H3.3335" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" /></svg><p>Voltar a traduzir</p></a>
+          {% else %}
+          <p>Agora é só entrar com a nova senha.</p>
+          <a class="line voltar" href="/auth/login"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8.00016 12.6666L3.3335 7.99992L8.00016 3.33325" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" /><path d="M12.6668 8H3.3335" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" /></svg><p>Ir para o login</p></a>
+          {% endif %}
+        </div>
+      </div>
     </section>
   </div>
 
-  <script src="../static/js/components/icons.js"></script>
-  <script src="../static/js/components/header.js"></script>
-  <script src="../static/js/components/footer.js"></script>
-  <script src="../static/js/pages/alterar-senha.js"></script>
+  <script src="/static/js/components/icons.js"></script>
+  <script src="/static/js/components/header.js"></script>
+  <script src="/static/js/components/footer.js"></script>
+  <script src="/static/js/pages/alterar.js"></script>
 
 </body>
 

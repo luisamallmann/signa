@@ -5,7 +5,7 @@
 
 body {
   /* Quando tiver a imagem do Figma, troque pelo caminho correto */
-  background-image: url("../assets/images/fundo-configuracoes.png");
+  background-image: url("../assets/images/fundo-config.png");
   background-size: cover;
   background-position: top center;
   background-repeat: no-repeat;
