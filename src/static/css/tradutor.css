@@ -40,6 +40,7 @@ body {
     justify-content: center;
     align-items: center;
     gap: 29px;
+    text-align: center;
 }
 
 .header h1 {
@@ -63,7 +64,7 @@ body {
 
 .page-content {
     display: flex;
-    height: 1057px;
+    min-height: 1057px;
     padding: 150px 120px 100px 120px;
     flex-direction: column;
     align-items: center;
@@ -73,13 +74,17 @@ body {
 
 .translate-container {
     display: flex;
+    width: 100%;
+    max-width: 1678px;
+    justify-content: center;
     align-items: center;
     gap: 24px;
 }
 
 .translate-side {
     display: flex;
-    width: 686px;
+    flex: 0 1 686px;
+    min-width: 0;
     flex-direction: column;
     align-items: flex-start;
     gap: 37px;
@@ -87,7 +92,8 @@ body {
 
 .tradutor {
     display: flex;
-    width: 968px;
+    flex: 0 1 968px;
+    min-width: 0;
     height: 578px;
     padding: 0;
     flex-direction: column;
@@ -182,8 +188,8 @@ body {
 
 .traducao {
     display: flex;
-    width: 686px;
-    height: 318px;
+    width: 100%;
+    min-height: 318px;
     padding: 33px 33px 1px 33px;
     flex-direction: column;
     align-items: flex-start;
@@ -224,8 +230,8 @@ h2 {
 
 .info {
     display: flex;
-    width: 686px;
-    height: 223px;
+    width: 100%;
+    min-height: 223px;
     padding: 14px 19px;
     flex-direction: column;
     justify-content: center;
@@ -255,8 +261,8 @@ ul {
 
 .info-content {
     display: flex;
-    width: 648px;
-    height: 150px;
+    width: 100%;
+    min-height: 150px;
     padding-left: 25px;
     flex-direction: column;
     justify-content: center;
@@ -295,4 +301,138 @@ ul {
     align-self: stretch;
     max-height: 200px;
     overflow-y: auto;
+}
+@media (max-width: 1440px) {
+    .page-content {
+        padding: 150px 40px 100px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .page-content {
+        min-height: 0;
+        padding: 130px 40px 100px;
+        gap: 48px;
+    }
+
+    .translate-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .tradutor,
+    .translate-side {
+        flex: none;
+        width: 100%;
+        max-width: 968px;
+    }
+
+    .tradutor {
+        height: auto;
+        aspect-ratio: 16 / 10;
+    }
+
+    .translate-side {
+        gap: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-content {
+        padding: 100px 16px 80px;
+        gap: 32px;
+    }
+
+    .header {
+        gap: 12px;
+    }
+
+    .header h1 {
+        font-size: 40px;
+    }
+
+    .header p {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    .tradutor {
+        aspect-ratio: 3 / 4;
+        max-height: 70vh;
+        border-radius: 20px;
+    }
+
+    .tradutor-header {
+        top: 12px;
+        right: 12px;
+    }
+
+    .camera-placeholder {
+        width: auto;
+        padding: 0 24px;
+        text-align: center;
+    }
+
+    .camera-placeholder svg {
+        width: 88px;
+        height: 88px;
+    }
+
+    .tradutor-footer {
+        padding: 24px 16px;
+        gap: 12px;
+    }
+
+    .tradutor-footer .btn-principal {
+        width: auto;
+        flex: 1;
+        max-width: 260px;
+        padding: 16px 20px;
+    }
+
+    .restart-btn {
+        flex-shrink: 0;
+        width: 56px;
+        height: 56px;
+        padding: 16px 16px 0;
+    }
+
+    .traducao {
+        min-height: 240px;
+        padding: 24px 20px 1px;
+        gap: 12px;
+    }
+
+    .traducao-placeholder {
+        height: 160px;
+        padding: 20px 0;
+    }
+
+    .traducao-texto {
+        font-size: 22px;
+    }
+
+    .info {
+        padding: 16px;
+    }
+
+    .info-header {
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    h2 {
+        font-size: 18px;
+        line-height: 26px;
+    }
+
+    .info-content {
+        min-height: 0;
+        padding-left: 20px;
+    }
+
+    ul {
+        font-size: 15px;
+        line-height: 1.7;
+    }
 }
