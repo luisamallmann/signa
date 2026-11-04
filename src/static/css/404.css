@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-title);
+}
+
+body {
+    background-image: url("../assets/images/fundo-hero.png");
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+.erro-page {
+    padding-top: 80px;
+}
+
+.erro {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 80px);
+    padding: 120px 40px;
+    text-align: center;
+}
+
+.brilho {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 340px;
+    height: 340px;
+    border-radius: 50%;
+    filter: blur(90px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.brilho--esquerda {
+    left: -80px;
+    background: radial-gradient(circle, #ffb830cc 0%, #e11d3580 50%, transparent 75%);
+}
+
+.brilho--direita {
+    right: -80px;
+    background: radial-gradient(circle, #ffb830cc 0%, #8a38f580 50%, transparent 75%);
+}
+
+.erro-conteudo {
+    position: relative;
+    z-index: 1;
+    max-width: 640px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+.erro-codigo {
+    font-family: var(--font-title);
+    font-size: 180px;
+    font-weight: 800;
+    line-height: 1;
+    background: linear-gradient(90deg, var(--vermelho), var(--roxo));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+
+.erro-conteudo h1 {
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--claro);
+}
+
+.erro-conteudo p {
+    font-family: var(--font-text);
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.7;
+}
+
+.botoes {
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.botoes a {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .erro {
+        min-height: calc(100vh - 64px);
+        padding: 80px 16px;
+    }
+
+    .erro-page {
+        padding-top: 64px;
+    }
+
+    .erro-codigo {
+        font-size: 120px;
+    }
+
+    .erro-conteudo h1 {
+        font-size: 32px;
+    }
+
+    .erro-conteudo p {
+        font-size: 15px;
+    }
+
+    .botoes {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .brilho {
+        width: 220px;
+        height: 220px;
+    }
+}
