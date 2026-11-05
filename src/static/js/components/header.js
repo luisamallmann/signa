@@ -17,7 +17,7 @@ function Header(pageAtiva = 'Home') {
   <div class="nav-overlay" id="nav-overlay"></div>
     <header>
       <a href="/" class="logo">
-        <img src="../static/assets/images/logo.png" alt="Signa Logo">
+        <img src="/static/assets/images/logo.png" alt="Signa Logo">
       </a>
 
       <nav id="nav-menu">

@@ -119,7 +119,10 @@ h1 {
     position: relative;
     z-index: 1;
     display: flex;
-    width: 1620px;
+    width: 100%;
+    max-width: 1620px;
+    margin-left: auto;
+    margin-right: auto;
     padding: 100px 142px;
     flex-direction: column;
     align-items: center;
@@ -157,19 +160,43 @@ h1 {
         font-size: 52px;
     }
 
+    .hero {
+        padding: 200px 24px 160px;
+    }
+
+    .tecnologia {
+        padding: 60px 32px 320px;
+    }
+
+    .tecnologia h2 {
+        font-size: 40px;
+    }
+
     .cards {
         flex-direction: column;
         align-items: center;
     }
 
     .card {
-        width: 90%;
+        max-width: 720px;
     }
 
     .sinal {
-        margin-top: -400px;
-        width: 95%;
+        margin-top: 64px;
         padding: 60px 40px;
+        gap: 48px;
+    }
+
+    .sinal h2 {
+        font-size: 40px;
+    }
+
+    .sinal p {
+        font-size: 20px;
+    }
+
+    .footer {
+        margin-top: -260px;
     }
 }
 
@@ -196,7 +223,7 @@ h1 {
     }
 
     .footer {
-        margin-top: -150px;
+        margin-top: -120px;
     }
 
     .hero {
@@ -220,16 +247,33 @@ h1 {
     }
 
     .tecnologia {
-        width: 100%;
+        width: calc(100% - 16px);
         border-radius: 24px 24px 0 0;
-        padding: 40px 24px 200px;
+        padding: 40px 16px 160px;
+    }
+
+    .tecnologia h2 {
+        font-size: 30px;
+    }
+
+    .cards {
+        margin-top: 40px;
+        gap: 16px;
+    }
+
+    .card {
+        padding: 24px;
     }
 
     .sinal {
-        margin-top: -180px;
-        width: 95%;
+        margin-top: 48px;
         padding: 48px 24px;
-        gap: 32px;
+        gap: 28px;
+    }
+
+    .sinal svg {
+        width: 72px;
+        height: 72px;
     }
 
     .sinal h2 {

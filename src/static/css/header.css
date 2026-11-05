@@ -172,6 +172,16 @@ nav {
   animation: fadeIn 0.2s ease;
 }
 
+@media (max-width: 1200px) {
+  header {
+    padding: 0 40px;
+  }
+
+  nav {
+    gap: 8px;
+  }
+}
+
 @media (max-width: 768px) {
   header {
     padding: 0 24px;

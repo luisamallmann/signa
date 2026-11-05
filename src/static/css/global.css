@@ -25,6 +25,10 @@
   padding: 0;
 }
 
+img {
+  max-width: 100%;
+}
+
 body {
   background: var(--escuro);
   color: var(--claro);
@@ -131,8 +135,9 @@ body {
 }
 
 .card {
-    width: 523px;
-    height: 242px;
+    width: 100%;
+    max-width: 523px;
+    min-height: 242px;
     padding: 30px;
     border-radius: 24px;
     border: 1px solid #fff7e82d;
@@ -148,7 +153,8 @@ body {
 
 .card-bg {
     position: absolute;
-    width: 480px;
+    width: 90%;
+    max-width: 480px;
     height: 200px;
     opacity: 0.3;
     background: #ffb730b2;

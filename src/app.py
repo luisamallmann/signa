@@ -52,5 +52,9 @@ def configuracoes():
 def privacidade():
     return render_template('privacidade.html')
 
+@app.errorhandler(404)
+def pagina_nao_encontrada(erro):
+    return render_template('404.html'), 404
+
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=False) #evitar carregar 2x o modelo
