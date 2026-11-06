@@ -25,7 +25,7 @@ def login():
             session['user_id'] = resultado[0]  # guarda quem entrou
             cursor.close()
             conn.close()
-            return redirect(url_for('home'))
+            return redirect(url_for('trad'))
         else:
             return render_template('login.html', erro_senha="Senha incorreta")
     else:
@@ -67,7 +67,7 @@ def cadastro():
     cursor.close()
     conn.close()
 
-    return redirect(url_for('home'))
+    return redirect(url_for('trad'))
 
 def _buscar(sql, valores):
     conn = conexao()
