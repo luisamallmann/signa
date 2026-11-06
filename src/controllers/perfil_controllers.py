@@ -2,7 +2,7 @@ from flask import request, redirect, url_for, render_template, session
 from database.conexao import conexao
 
 
-def _buscar_usuario():
+def buscar_usuario():
     """Retorna (nome, email) do usuário logado ou None se não houver sessão."""
     user_id = session.get('user_id')
     if not user_id:
@@ -18,7 +18,7 @@ def _buscar_usuario():
 
 
 def perfil():
-    usuario = _buscar_usuario()
+    usuario = buscar_usuario()
     if not usuario:
         return redirect(url_for('auth.fazer_login'))
 
@@ -27,7 +27,7 @@ def perfil():
 
 
 def editar_perfil():
-    usuario = _buscar_usuario()
+    usuario = buscar_usuario()
     if not usuario:
         return redirect(url_for('auth.fazer_login'))
 
