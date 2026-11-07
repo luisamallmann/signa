@@ -25,7 +25,7 @@ def login():
             session['user_id'] = resultado[0]  # guarda quem entrou
             cursor.close()
             conn.close()
-            return redirect(url_for('home'))
+            return redirect(url_for('trad'))
         else:
             return render_template('login.html', erro_senha="Senha incorreta")
     else:
@@ -67,7 +67,7 @@ def cadastro():
     cursor.close()
     conn.close()
 
-    return redirect(url_for('home'))
+    return redirect(url_for('trad'))
 
 def _buscar(sql, valores):
     conn = conexao()
@@ -98,9 +98,7 @@ def _email_logado():
 def _codigo_digitado():
     return "".join(request.form.getlist('digito')).strip()
 
-
-# ---------------- ALTERAR SENHA ----------------
-# etapas: email -> codigo -> senha -> sucesso (guardadas na session)
+# alterar senha etapas: email -> codigo -> senha -> sucesso (guardadas na session)
 
 def alt_senha():
     def tela(**extra):
@@ -158,9 +156,7 @@ def alt_senha():
 
     return tela()
 
-
-# ---------------- ALTERAR EMAIL ----------------
-# etapas: form -> codigo -> sucesso (precisa estar logado)
+# alterar email etapas: form -> codigo -> sucesso (precisa estar logado)
 
 def alt_email():
     email_atual = _email_logado()
