@@ -31,7 +31,11 @@ let segmento = [], gravando = false, semMaoDesde = null;
 let timerErro = null;
 const palavras = [];
 
-const EMOJI_PADRAO = elEmoji.textContent;
+const EMOJI_PADRAO = elEmoji.innerHTML;
+// X branco em SVG: contrasta com o gradiente da caixinha em qualquer sistema (emoji muda de cor)
+const ICONE_ERRO = `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" aria-label="Erro">
+  <path d="M18 6L6 18M6 6l12 12" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>`;
 const MSG_PADRAO = elMsg.textContent;
 const ERRO_DURACAO_MS = 4000;  // depois disso a caixa volta a mostrar a tradução
 
@@ -69,7 +73,7 @@ function mostrarTexto() {
 // Troca a caixa de tradução pelo aviso de sinal não reconhecido
 function mostrarErro() {
   clearTimeout(timerErro);
-  elEmoji.textContent = "❌";
+  elEmoji.innerHTML = ICONE_ERRO;
   elMsg.textContent = "Sinal não reconhecido, tente novamente";
   elVazio.hidden = false;
   elTexto.hidden = true;
@@ -79,7 +83,7 @@ function mostrarErro() {
 function limparErro() {
   clearTimeout(timerErro);
   timerErro = null;
-  elEmoji.textContent = EMOJI_PADRAO;
+  elEmoji.innerHTML = EMOJI_PADRAO;
   elMsg.textContent = MSG_PADRAO;
 }
 
