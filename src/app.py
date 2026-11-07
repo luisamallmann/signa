@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, session, redirect, url_for
 from routes.auth import auth
 from routes.translator import translator
 from routes.perfil import perfil_bp
-from controllers.perfil_controllers import buscar_usuario 
+from controllers.perfil_controllers import buscar_usuario
 
 app = Flask(__name__)
 app.secret_key = "signa-feciti-2026"  # necessário para guardar quem está logado (session)

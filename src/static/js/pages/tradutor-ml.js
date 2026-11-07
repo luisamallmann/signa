@@ -21,12 +21,23 @@ const placeholderCamera = document.getElementById("camera-placeholder");
 const elStatus = document.getElementById("camera-status") || { textContent: "" };
 const elVazio = document.getElementById("traducao-vazio");
 const elTexto = document.getElementById("traducao-texto");
+const elEmoji = document.getElementById("traducao-emoji");
+const elMsg = document.getElementById("traducao-msg");
 const rotuloBotao = btnIniciar.querySelector("span");
 
 // ---------- estado ----------
 let landmarker = null, stream = null, rodando = false;
 let segmento = [], gravando = false, semMaoDesde = null;
+let timerErro = null;
 const palavras = [];
+
+const EMOJI_PADRAO = elEmoji.innerHTML;
+// X branco em SVG: contrasta com o gradiente da caixinha em qualquer sistema (emoji muda de cor)
+const ICONE_ERRO = `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" aria-label="Erro">
+  <path d="M18 6L6 18M6 6l12 12" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>`;
+const MSG_PADRAO = elMsg.textContent;
+const ERRO_DURACAO_MS = 4000;  // depois disso a caixa volta a mostrar a tradução
 
 // Mesma lógica do extrair() do Python: [esquerda(63), direita(63)]
 function extrair(resultado) {
@@ -52,10 +63,28 @@ function reamostrar(seq, n) {
 }
 
 function mostrarTexto() {
+  limparErro();
   const tem = palavras.length > 0;
   elVazio.hidden = tem;
   elTexto.hidden = !tem;
   elTexto.textContent = palavras.join(" ");
+}
+
+// Troca a caixa de tradução pelo aviso de sinal não reconhecido
+function mostrarErro() {
+  clearTimeout(timerErro);
+  elEmoji.innerHTML = ICONE_ERRO;
+  elMsg.textContent = "Sinal não reconhecido, tente novamente";
+  elVazio.hidden = false;
+  elTexto.hidden = true;
+  timerErro = setTimeout(mostrarTexto, ERRO_DURACAO_MS);
+}
+
+function limparErro() {
+  clearTimeout(timerErro);
+  timerErro = null;
+  elEmoji.innerHTML = EMOJI_PADRAO;
+  elMsg.textContent = MSG_PADRAO;
 }
 
 function resetarSegmento() {
@@ -90,6 +119,7 @@ async function predizer(seq) {
       mostrarTexto();
     } else {
       elStatus.textContent = "Sinal não reconhecido, tente de novo.";
+      mostrarErro();
     }
   } catch (e) {
     elStatus.textContent = "Erro ao falar com o servidor.";
@@ -114,6 +144,7 @@ function loop() {
       if (!gravando) {               // mão apareceu: começa um sinal novo
         gravando = true;
         segmento = [];
+        if (timerErro) mostrarTexto();  // começou outro sinal: some o aviso de erro
         elStatus.textContent = "Gravando sinal...";
       }
       segmento.push(extrair(resultado));
@@ -171,6 +202,7 @@ function parar() {
   placeholderCamera.hidden = false;
   rotuloBotao.textContent = "Iniciar Tradução";
   elStatus.textContent = "";
+  mostrarTexto();
 }
 
 btnIniciar.addEventListener("click", () => (rodando ? parar() : iniciar()));
