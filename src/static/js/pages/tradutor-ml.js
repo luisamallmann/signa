@@ -71,7 +71,6 @@ function mostrarErro() {
   clearTimeout(timerErro);
   elEmoji.textContent = "❌";
   elMsg.textContent = "Sinal não reconhecido, tente novamente";
-  elVazio.classList.add("traducao-placeholder--erro");
   elVazio.hidden = false;
   elTexto.hidden = true;
   timerErro = setTimeout(mostrarTexto, ERRO_DURACAO_MS);
@@ -82,7 +81,6 @@ function limparErro() {
   timerErro = null;
   elEmoji.textContent = EMOJI_PADRAO;
   elMsg.textContent = MSG_PADRAO;
-  elVazio.classList.remove("traducao-placeholder--erro");
 }
 
 function resetarSegmento() {

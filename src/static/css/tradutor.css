@@ -436,15 +436,3 @@ ul {
         line-height: 1.7;
     }
 }
-
-.traducao-placeholder--erro .icone-card {
-    background: rgba(225, 29, 53, 0.25);
-    border: 1px solid rgba(225, 29, 53, 0.6);
-    box-shadow: 0 4px 20px 0 rgba(225, 29, 53, 0.35);
-}
-
-.traducao-placeholder--erro p {
-    color: #fff;
-    font-weight: 600;
-    text-align: center;
-}
